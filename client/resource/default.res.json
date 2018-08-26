@@ -1,0 +1,35 @@
+{
+	"groups": [
+		{
+			"keys": "load_png,loading_bg_jpg,loading_bg_jdt1_png,loading_bg_jdt2_png,loading_bg_jdt3_png",
+			"name": "loading"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/loading/load.png",
+			"type": "image",
+			"name": "load_png"
+		},
+		{
+			"url": "assets/loading/loading_bg.jpg",
+			"type": "image",
+			"name": "loading_bg_jpg"
+		},
+		{
+			"url": "assets/loading/loading_bg_jdt1.png",
+			"type": "image",
+			"name": "loading_bg_jdt1_png"
+		},
+		{
+			"url": "assets/loading/loading_bg_jdt2.png",
+			"type": "image",
+			"name": "loading_bg_jdt2_png"
+		},
+		{
+			"url": "assets/loading/loading_bg_jdt3.png",
+			"type": "image",
+			"name": "loading_bg_jdt3_png"
+		}
+	]
+}

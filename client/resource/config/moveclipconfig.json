@@ -1,0 +1,19 @@
+[
+    {    "Id":1  , "Texture":"main_diamond_tex_png"  , "Config":"main_diamond_mc_json"  , "Name":"main_diamond"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":2  , "Texture":"main_money_tex_png"  , "Config":"main_money_mc_json"  , "Name":"main_money"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":3  , "Texture":"mall_new_tex_png"  , "Config":"mall_new_mc_json"  , "Name":"mall_new"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":4  , "Texture":"dress_frameshine_tex_png"  , "Config":"dress_frameshine_mc_json"  , "Name":"dress_frameshine"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":5  , "Texture":"dailybonus_bgshine_tex_png"  , "Config":"dailybonus_bgshine_mc_json"  , "Name":"dailybonus_bgshine"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":6  , "Texture":"dailybonus_frame_texx_png"  , "Config":"dailybonus_frame_mc_json"  , "Name":"dailybonus_frame"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":7  , "Texture":"dress_light_tex_png"  , "Config":"dress_light_mc_json"  , "Name":"dress_light"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":8  , "Texture":"stock_frameshine_tex_png"  , "Config":"stock_frameshine_mc_json"  , "Name":"stock_frameshine"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":9  , "Texture":"PK_Lightning_tex_png"  , "Config":"PK_Lightning_mc_json"  , "Name":"PK_Lightning"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[50,50]  , "Scale":[] } ,
+    {    "Id":10  , "Texture":"football_man_tex_png"  , "Config":"football_man_mc_json"  , "Name":"football_man"  , "Play":"Play"  , "FrameRate":10.0  , "Times":-1  , "Location":[0,0]  , "Scale":[0.6,0.6] } ,
+    {    "Id":11  , "Texture":"football_man_tex_png"  , "Config":"football_man_mc_json"  , "Name":"football_man"  , "Play":"Play"  , "FrameRate":12.0  , "Times":-1  , "Location":[0,0]  , "Scale":[0.6,0.6] } ,
+    {    "Id":12  , "Texture":"football_man_tex_png"  , "Config":"football_man_mc_json"  , "Name":"football_man"  , "Play":"Play"  , "FrameRate":8.0  , "Times":-1  , "Location":[0,0]  , "Scale":[0.6,0.6] } ,
+    {    "Id":13  , "Texture":"football_man_tex_png"  , "Config":"football_man_mc_json"  , "Name":"football_man"  , "Play":"Play"  , "FrameRate":8.0  , "Times":-1  , "Location":[0,0]  , "Scale":[0.5,0.5] } ,
+    {    "Id":14  , "Texture":"stockindex_interval_tex_png"  , "Config":"stockindex_interval_mc_json"  , "Name":"stockindex_interval"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[0,0]  , "Scale":[1.54,1.5] } ,
+    {    "Id":15  , "Texture":"stockindex_interval_tex_png"  , "Config":"stockindex_interval_mc_json"  , "Name":"stockindex_interval"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[0,0]  , "Scale":[2.0,2.0] } ,
+    {    "Id":16  , "Texture":"loading_EEG_tex_png"  , "Config":"loading_EEG_mc_json"  , "Name":"loading_EEG"  , "Play":"Play"  , "FrameRate":-1.0  , "Times":-1  , "Location":[0,0]  , "Scale":[] } 
+    
+]

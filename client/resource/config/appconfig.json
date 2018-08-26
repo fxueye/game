@@ -1,0 +1,5 @@
+[
+    {    "Id":1  , "SocketIp":"127.0.0.1"  , "SocketPort":8001  , "HttpIp":"127.0.0.1"  , "HttpPort":2000 } ,
+    {    "Id":2  , "SocketIp":"192.168.1.143"  , "SocketPort":18080  , "HttpIp":"127.0.0.1"  , "HttpPort":2000 } 
+    
+]

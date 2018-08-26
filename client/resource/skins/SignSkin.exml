@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skin.SignSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Image id="imgMask" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" source="common_bg_hd1_png" scale9Grid="8,7,14,13" anchorOffsetX="0" anchorOffsetY="0"/>
+	<e:Group id="gpSign" width="1142" height="438" horizontalCenter="0" verticalCenter="0" anchorOffsetX="571" anchorOffsetY="219">
+		<e:Image width="1142" height="392" horizontalCenter="0" bottom="0" source="qiandao_bg_jlk_png" scale9Grid="171,0,141,413"/>
+		<e:Image width="523" height="127" top="0" horizontalCenter="0" source="qiandao_bg_sd_png"/>
+		<e:Image width="205" height="66" source="qiandao_text_7riqiandao_png" horizontalCenter="0" top="0"/>
+		<e:Scroller id="scrollerSign" width="1057" height="217" bottom="96" horizontalCenter="0.5">
+			<e:List id="listSign">
+				<e:layout>
+					<e:HorizontalLayout gap="0"/>
+				</e:layout>
+			</e:List>
+		</e:Scroller>
+		<e:Button id="btnGetAward" label="领取奖励" y="350.84" horizontalCenter="0" enabled="true" skinName="skin.BtnYellowSkin"/>
+	</e:Group>
+</e:Skin>

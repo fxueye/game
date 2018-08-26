@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skin.RandNameSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+<e:Image id="imgMask" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" anchorOffsetX="0" anchorOffsetY="0" rotation="90" source="common_bg_hd2_png" scale9Grid="10,9,12,11"/>
+	<e:Group id="gpCenter" width="516" height="308" verticalCenter="0" horizontalCenter="0" scaleX="1" scaleY="1">
+		<e:Image width="516" height="308" horizontalCenter="0" verticalCenter="0" source="common_bg_ty1_png" scale9Grid="8,31,11,64"/>
+		<e:Group width="516" height="54" top="0" horizontalCenter="0">
+			<e:Image width="100%" height="100%" horizontalCenter="0" verticalCenter="0" source="common_bg_ty3_png" fillMode="scale" scale9Grid="3,0,3,54"/>
+			<e:Image width="488" height="54" horizontalCenter="0" verticalCenter="0" source="common_bg_ty2_png"/>
+			<e:Label id="labTitle" text="修改昵称" horizontalCenter="0" verticalCenter="0" fontFamily="SimHei" size="28" bold="true" italic="true"/>
+		</e:Group>
+		<e:Group width="516" height="308" horizontalCenter="0" bottom="0">
+			<e:Group width="337" height="45" y="105" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0">
+				<e:Image width="100%" height="100%" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0" scale9Grid="11,10,9,10" source="common_bg_hd2_png"/>
+				<e:EditableText id="ettName" text="" rotation="359.59" anchorOffsetX="0" anchorOffsetY="0" verticalAlign="middle" fontFamily="SimHei" size="28" scaleX="1" scaleY="1" top="0" bottom="0" left="10" right="10"/>
+				<e:Button id="btnChange" label="" width="63" height="64" verticalCenter="0" right="-10" scaleX="1" scaleY="1">
+					<e:skinName>
+					<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="common_icon_shaizi_png" source.down="common_icon_shaizi_png" source.disabled="common_icon_shaizi_png"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+					</e:skinName>
+				</e:Button>
+			</e:Group>
+			<e:Button id="btnConfirm" label="确认" y="222.72" enabled="true" skinName="skin.BtnYellowSkin" horizontalCenter="0"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

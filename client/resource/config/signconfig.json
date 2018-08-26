@@ -1,0 +1,10 @@
+[
+    {    "Id":1  , "Name":"资产"  , "Icon":"common_icon_q_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[2]  , "Nums":[5000]  , "Scale":1.25 } ,
+    {    "Id":2  , "Name":"资产"  , "Icon":"icon_money01_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[2]  , "Nums":[10000]  , "Scale":0.7 } ,
+    {    "Id":3  , "Name":"资产"  , "Icon":"icon_money02_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[2]  , "Nums":[50000]  , "Scale":0.7 } ,
+    {    "Id":4  , "Name":"资产"  , "Icon":"icon_money03_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[2]  , "Nums":[100000]  , "Scale":0.7 } ,
+    {    "Id":5  , "Name":"资产"  , "Icon":"icon_money04_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[2]  , "Nums":[150000]  , "Scale":0.7 } ,
+    {    "Id":6  , "Name":"资产"  , "Icon":"icon_money05_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[2]  , "Nums":[300000]  , "Scale":0.7 } ,
+    {    "Id":7  , "Name":"钻石"  , "Icon":"icon_diamond02_png"  , "Bg":"common_bg_wpk_l_png"  , "Reward":[1]  , "Nums":[100]  , "Scale":0.7 } 
+    
+]

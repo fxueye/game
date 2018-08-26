@@ -1,0 +1,5 @@
+[
+    {    "Id":1  , "MailId":1   , "MailType":1  , "SubjectText":12001   , "ContentText":12002   , "SenderText":21   , "Icon":1  , "RewardItemIds":[1]  , "RewardNum":[100]  , "SaveTime":0 } ,
+    {    "Id":2  , "MailId":501   , "MailType":1  , "SubjectText":12001   , "ContentText":12002   , "SenderText":21   , "Icon":1  , "RewardItemIds":[1]  , "RewardNum":[100]  , "SaveTime":72 } 
+    
+]

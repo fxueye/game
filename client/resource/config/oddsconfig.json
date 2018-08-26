@@ -1,0 +1,7 @@
+[
+    {    "Id":1   , "ConfirmValue":0.1  , "MovingRate":0.8 } ,
+    {    "Id":2   , "ConfirmValue":0.3  , "MovingRate":0.8 } ,
+    {    "Id":3   , "ConfirmValue":0.1  , "MovingRate":0.0 } ,
+    {    "Id":4   , "ConfirmValue":0.3  , "MovingRate":0.0 } 
+    
+]

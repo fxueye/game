@@ -1,0 +1,9 @@
+[
+    {    "Id":0  , "Sort":1  , "ProductId":"com.baozou.snake.productid1"  , "ProductName":"60钻石"  , "ProductDesc":"钻石"  , "Visible":false  , "Hot":true  , "MoneyType":1  , "MoneyCount":60  , "GiftMoneyCount":6  , "Price":6.0  , "Currency":"CNY" } ,
+    {    "Id":1  , "Sort":2  , "ProductId":"com.baozou.snake.productid2"  , "ProductName":"300钻石"  , "ProductDesc":"钻石"  , "Visible":false  , "Hot":true  , "MoneyType":1  , "MoneyCount":300  , "GiftMoneyCount":36  , "Price":30.0  , "Currency":"CNY" } ,
+    {    "Id":2  , "Sort":3  , "ProductId":"com.baozou.snake.productid3"  , "ProductName":"680钻石"  , "ProductDesc":"钻石"  , "Visible":false  , "Hot":true  , "MoneyType":1  , "MoneyCount":680  , "GiftMoneyCount":90  , "Price":68.0  , "Currency":"CNY" } ,
+    {    "Id":3  , "Sort":4  , "ProductId":"com.baozou.snake.productid4"  , "ProductName":"1280钻石"  , "ProductDesc":"钻石"  , "Visible":false  , "Hot":true  , "MoneyType":1  , "MoneyCount":1280  , "GiftMoneyCount":180  , "Price":128.0  , "Currency":"CNY" } ,
+    {    "Id":4  , "Sort":5  , "ProductId":"com.baozou.snake.productid5"  , "ProductName":"3280钻石"  , "ProductDesc":"钻石"  , "Visible":false  , "Hot":true  , "MoneyType":1  , "MoneyCount":3280  , "GiftMoneyCount":500  , "Price":328.0  , "Currency":"CNY" } ,
+    {    "Id":5  , "Sort":6  , "ProductId":"com.baozou.snake.productid6"  , "ProductName":"6480钻石"  , "ProductDesc":"钻石"  , "Visible":false  , "Hot":true  , "MoneyType":1  , "MoneyCount":6480  , "GiftMoneyCount":1200  , "Price":648.0  , "Currency":"CNY" } 
+    
+]

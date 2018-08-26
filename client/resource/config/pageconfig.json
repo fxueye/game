@@ -1,0 +1,14 @@
+[
+    {    "Id":1  , "PageId":10001  , "Bg":1  , "Type":1  , "Location":[380,1060]  , "Body":1  , "Scale":1.1399999999999999  } ,
+    {    "Id":2  , "PageId":10002  , "Bg":4  , "Type":1  , "Location":[305,680]  , "Body":1  , "Scale":0.7  } ,
+    {    "Id":3  , "PageId":10003  , "Bg":3  , "Type":1  , "Location":[]  , "Body":1  , "Scale":0.72  } ,
+    {    "Id":4  , "PageId":10006  , "Bg":5  , "Type":1  , "Location":[]  , "Body":1  , "Scale":0.72  } ,
+    {    "Id":5  , "PageId":10008  , "Bg":3  , "Type":1  , "Location":[]  , "Body":1  , "Scale":0.72  } ,
+    {    "Id":6  , "PageId":10011  , "Bg":2  , "Type":1  , "Location":[]  , "Body":1  , "Scale":0.72  } ,
+    {    "Id":7  , "PageId":10009  , "Bg":3  , "Type":1  , "Location":[]  , "Body":1  , "Scale":0.72  } ,
+    {    "Id":8  , "PageId":10010  , "Bg":3  , "Type":1  , "Location":[]  , "Body":1  , "Scale":0.72  } ,
+    {    "Id":9  , "PageId":10019  , "Bg":3  , "Type":1  , "Location":[]  , "Body":1  , "Scale":0.72  } ,
+    {    "Id":10  , "PageId":10017  , "Bg":8  , "Type":1  , "Location":[]  , "Body":0  , "Scale":0.0  } ,
+    {    "Id":11  , "PageId":10000  , "Bg":8  , "Type":1  , "Location":[]  , "Body":0  , "Scale":0.0  } 
+    
+]
