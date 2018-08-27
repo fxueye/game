@@ -138,6 +138,23 @@ class Packet{
         this.pos += 8;
         return rst;
     }
+    public PutString(val:string){
+        if(val == null) val= "";
+        var src = BitConverter.GetBytes(val);
+        var len = src.byteLength;
+        this.EnsureCapacity(2 + len);
+        this.PutShort(len);
+        Packet.CopyBuffer(src,0,this.buffer,this.pos,len);
+        this.pos += len;
+        if(this.size < this.pos) this.size = this.pos;
+    }
+    public GetString():string{
+        var len = this.GetShort();
+        if(len == 0) return "";
+        var str = BitConverter.ToString(this.buffer,this.pos,len);
+        this.pos += len;
+        return str;
+    }
     private EnsureCapacity(increament:number):void{
         if(this.Capability - this.Position >= increament){
             return;
