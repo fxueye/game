@@ -2,11 +2,14 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
 var Socket = (function () {
-    function Socket() {
+    function Socket(name) {
+        if (name === void 0) { name = ""; }
         this._reconnectCount = 0;
         this._needReconnect = false;
         this._maxReconnectCount = 10;
         this._hander = null;
+        this._name = "";
+        this._name = name;
     }
     Socket.prototype.init = function (host, port, type) {
         this._host = host;

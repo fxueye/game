@@ -14,14 +14,14 @@
 	],
 	"game": [
 		"bin-debug/core/base/BaseSprite.js",
-		"bin-debug/core/mvc/BaseController.js",
 		"bin-debug/core/mvc/BaseProxy.js",
 		"bin-debug/core/mvc/BaseView.js",
 		"bin-debug/core/sound/BaseSound.js",
 		"bin-debug/core/utils/Dictionary.js",
 		"bin-debug/game/module/components/Icon.js",
 		"bin-debug/core/base/BaseScene.js",
-		"bin-debug/game/conf/MoveClipConfig.js",
+		"bin-debug/core/mvc/BaseController.js",
+		"bin-debug/game/conf/LevelConfig.js",
 		"bin-debug/core/mgr/EventMgr.js",
 		"bin-debug/core/mgr/LayerMgr.js",
 		"bin-debug/core/mgr/SceneMgr.js",
@@ -38,7 +38,11 @@
 		"bin-debug/core/net/http/http.js",
 		"bin-debug/core/net/rpc/RPC.js",
 		"bin-debug/core/net/simple/BitConverter.js",
+		"bin-debug/core/net/simple/Command.js",
+		"bin-debug/core/net/simple/IWrapper.js",
 		"bin-debug/core/net/simple/Packet.js",
+		"bin-debug/core/net/simple/PackUtil.js",
+		"bin-debug/core/net/simple/Request.js",
 		"bin-debug/core/net/simple/SimpleRPC.js",
 		"bin-debug/core/net/socket/ISocketHander.js",
 		"bin-debug/core/net/socket/Socket.js",
@@ -72,9 +76,9 @@
 		"bin-debug/game/conf/HelpConfig.js",
 		"bin-debug/game/conf/IntervalConfig.js",
 		"bin-debug/game/conf/ItemConfig.js",
-		"bin-debug/game/conf/LevelConfig.js",
+		"bin-debug/core/App.js",
 		"bin-debug/game/conf/MailConfig.js",
-		"bin-debug/game/utils/WeixinUtils.js",
+		"bin-debug/game/conf/MoveClipConfig.js",
 		"bin-debug/game/conf/OddsConfig.js",
 		"bin-debug/game/conf/PageConfig.js",
 		"bin-debug/game/conf/PartConfig.js",
@@ -134,6 +138,6 @@
 		"bin-debug/game/utils/MoveClipUtils.js",
 		"bin-debug/game/utils/ParticleUtils.js",
 		"bin-debug/game/utils/ToastUtils.js",
-		"bin-debug/core/App.js"
+		"bin-debug/game/utils/WeixinUtils.js"
 	]
 }

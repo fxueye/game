@@ -47,8 +47,8 @@ var ServerView = (function (_super) {
         var a = ["你好！", "abcd", "##"];
         for (var _i = 0, a_1 = a; _i < a_1.length; _i++) {
             var k = a_1[_i];
-            var bs = BitConverter.GetBytes(k);
-            var st = BitConverter.ToString(bs, 0, bs.byteLength);
+            var bs = Net.Simple.BitConverter.GetBytes(k);
+            var st = Net.Simple.BitConverter.ToString(bs, 0, bs.byteLength);
             console.log("st:" + st);
         }
         console.log("####" + (typeof a));

@@ -9,8 +9,10 @@ class Socket {
 	private _needReconnect:boolean = false;
     private _maxReconnectCount = 10;
 	private _hander:ISocketHander = null;
+	private _name:string = "";
 
-	public constructor() {
+	public constructor(name:string = "") {
+		this._name = name;
 	}
 	public init(host:string,port:number,type?:string):void{
 		this._host = host;
@@ -93,7 +95,7 @@ class Socket {
         }
 		this.removeEvents();
     }
-	private reconnect():void {
+	public reconnect():void {
         this.disCurrentConnect();
         this._reconnectCount++;
         if (this._reconnectCount < this._maxReconnectCount) {

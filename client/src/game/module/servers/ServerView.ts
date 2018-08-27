@@ -46,8 +46,8 @@ class ServerView extends BaseUIView {
 		egret.localStorage.setItem("jrdh_openid",this.elabOpenId.text);
 		var a = ["你好！","abcd","##"];
 		for(var k of a){
-			var bs = BitConverter.GetBytes(k);
-			var st = BitConverter.ToString(bs,0,bs.byteLength);
+			var bs = Net.Simple.BitConverter.GetBytes(k);
+			var st = Net.Simple.BitConverter.ToString(bs,0,bs.byteLength);
 			console.log("st:"+st);
 		}
 		
