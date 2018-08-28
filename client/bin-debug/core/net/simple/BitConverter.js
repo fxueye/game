@@ -19,7 +19,7 @@ var Net;
                         else if (b == 64) {
                             dv.setFloat64(0, a);
                         }
-                        return ba;
+                        return new Uint8Array(ba);
                     }
                     else {
                         var ba = new ArrayBuffer(b / 8);
@@ -36,18 +36,18 @@ var Net;
                         else if (b == 64) {
                             BitConverter.setInt64(a, dv, 0);
                         }
-                        return ba;
+                        return new Uint8Array(ba);
                     }
                 }
                 else if ((typeof a === "boolean")) {
                     var ba = new ArrayBuffer(1);
                     var dv = new DataView(ba);
                     dv.setUint8(0, a ? 1 : 0);
-                    return ba;
+                    return new Uint8Array(ba);
                 }
                 else if ((typeof a === "string")) {
                     var ub = BitConverter.encodeUTF8(a);
-                    return ub.buffer;
+                    return ub;
                 }
             };
             BitConverter.getInt64 = function (v, pos) {

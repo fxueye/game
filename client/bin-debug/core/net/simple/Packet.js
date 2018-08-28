@@ -22,7 +22,7 @@ var Net;
                     this.size = bytes.byteLength;
                 }
                 else {
-                    this.buffer = new ArrayBuffer(len);
+                    this.buffer = new Uint8Array(len);
                 }
             }
             Object.defineProperty(Packet.prototype, "Position", {
@@ -81,25 +81,27 @@ var Net;
                 return this.pos == this.size;
             };
             Packet.prototype.GetData = function () {
-                var bytes = new ArrayBuffer(this.size);
-                Packet.CopyBuffer(this.buffer, bytes, this.size);
-                return bytes;
+                return this.buffer;
             };
             Packet.prototype.PutBytes = function (bytes) {
                 this.EnsureCapacity(bytes.byteLength);
-                Packet.CopyBuffer(bytes, 0, this.buffer, this.pos, bytes.byteLength);
+                this.buffer.set(bytes, this.pos);
                 this.pos += bytes.byteLength;
                 if (this.size < this.pos)
                     this.size = this.pos;
             };
             Packet.prototype.GetBytes = function (dest, start, length) {
-                Packet.CopyBuffer(this.buffer, this.pos, dest, start, length);
+                if (!dest) {
+                    return;
+                }
+                dest.set(this.buffer.subarray(this.pos, this.pos + length), start);
                 this.pos += length;
             };
             Packet.prototype.PutBool = function (value) {
                 this.EnsureCapacity(1);
                 var src = Simple.BitConverter.GetBytes(value);
-                Packet.CopyBuffer(src, 0, this.buffer, this.pos, src.byteLength);
+                // Packet.CopyBuffer(src,0,this.buffer,this.pos,src.byteLength);
+                this.buffer.set(src, this.pos);
                 this.pos += src.byteLength;
                 if (this.size < this.pos)
                     this.size = this.pos;
@@ -112,7 +114,7 @@ var Net;
             Packet.prototype.PutShort = function (val) {
                 this.EnsureCapacity(2);
                 var src = Simple.BitConverter.GetBytes(val, 16);
-                Packet.CopyBuffer(src, 0, this.buffer, this.pos, src.byteLength);
+                this.buffer.set(src, this.pos);
                 this.pos += src.byteLength;
                 if (this.size < this.pos)
                     this.size = this.pos;
@@ -125,7 +127,7 @@ var Net;
             Packet.prototype.PutInt = function (val) {
                 this.EnsureCapacity(4);
                 var src = Simple.BitConverter.GetBytes(val, 32);
-                Packet.CopyBuffer(src, 0, this.buffer, this.pos, src.byteLength);
+                this.buffer.set(src, this.pos);
                 this.pos += src.byteLength;
                 if (this.size < this.pos)
                     this.size = this.pos;
@@ -138,7 +140,7 @@ var Net;
             Packet.prototype.PutLong = function (val) {
                 this.EnsureCapacity(8);
                 var src = Simple.BitConverter.GetBytes(val, 64);
-                Packet.CopyBuffer(src, 0, this.buffer, this.pos, src.byteLength);
+                this.buffer.set(src, this.pos);
                 this.pos += src.byteLength;
                 if (this.size < this.pos)
                     this.size = this.pos;
@@ -151,7 +153,7 @@ var Net;
             Packet.prototype.PutFloat = function (val) {
                 this.EnsureCapacity(4);
                 var src = Simple.BitConverter.GetBytes(val, 32, true);
-                Packet.CopyBuffer(src, 0, this.buffer, this.pos, src.byteLength);
+                this.buffer.set(src, this.pos);
                 this.pos += src.byteLength;
                 if (this.size < this.pos)
                     this.size = this.pos;
@@ -180,7 +182,7 @@ var Net;
                 var len = src.byteLength;
                 this.EnsureCapacity(2 + len);
                 this.PutShort(len);
-                Packet.CopyBuffer(src, 0, this.buffer, this.pos, len);
+                this.buffer.set(src, this.pos);
                 this.pos += len;
                 if (this.size < this.pos)
                     this.size = this.pos;
@@ -203,59 +205,9 @@ var Net;
                 }
                 var newCapacity = requiredCapacity > this.Capability * 2 ? requiredCapacity : this.Capability * 2;
                 newCapacity = requiredCapacity > Packet.PACKET_MAX_LEN ? Packet.PACKET_MAX_LEN : newCapacity;
-                var newBuffer = new ArrayBuffer(newCapacity);
-                Packet.CopyBuffer(this.buffer, newBuffer, this.size);
+                var newBuffer = new Uint8Array(newCapacity);
+                newBuffer.set(this.buffer, 0);
                 this.buffer = newBuffer;
-            };
-            Packet.CopyBuffer = function (a, b, c, d, e) {
-                var src = null;
-                var dst = null;
-                var size = null;
-                var idx = null;
-                var index = null;
-                var len = null;
-                if (a instanceof ArrayBuffer) {
-                    src = a;
-                }
-                if (typeof b === "number") {
-                    idx = b;
-                }
-                else if (b instanceof ArrayBuffer) {
-                    dst = b;
-                }
-                if (c instanceof ArrayBuffer) {
-                    dst = c;
-                }
-                else if (typeof c === "number") {
-                    size = c;
-                }
-                if (typeof d === "number") {
-                    index = d;
-                }
-                if (typeof e === "number") {
-                    len = e;
-                }
-                if ((src instanceof ArrayBuffer) && (dst instanceof ArrayBuffer)) {
-                    var dstArray = new Int8Array(dst);
-                    var srcArray = new Int8Array(src);
-                    if ((typeof size === "number")) {
-                        for (var i = 0; i < size; i++) {
-                            dstArray[i] = srcArray[i];
-                        }
-                    }
-                    if ((typeof idx === "number") && (typeof index === "number") && (typeof len === "number")) {
-                        var srcLen = src.byteLength;
-                        var endIdx = idx + srcLen;
-                        for (var i = idx; i < len; i++) {
-                            if (idx < endIdx) {
-                                dstArray[i] = srcArray[i];
-                            }
-                            else {
-                                //TODO
-                            }
-                        }
-                    }
-                }
             };
             Packet.PACKET_DEFAULT_LEN = 256;
             Packet.PACKET_MAX_LEN = 1024 * 1024;

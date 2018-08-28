@@ -210,18 +210,19 @@ namespace Net.Simple{
                         throw new Error("too huge package on receive, len=" + len);
                     }
                     if(this._recvSize < len + 4) break;
-                    var data = null;
+                    var data:Uint8Array = null;
                     if(this._encryptKey != null){
                         //TODO 解密
                     }else{
-                        data = new ArrayBuffer(len);
-                        Packet.CopyBuffer(this._eRecvBuffer.buffer,4,data,0,len)
+                        data = new Uint8Array(len);
+                        data.set(this._recvBuffer.subarray(4,len),0);
+
                     }
                     var pack = new Packet(data);
                     this._recvQueue.push(pack);
                     this._recvSize -= len + 4;
                     if(this._recvSize > 0)
-                        Packet.CopyBuffer(this._eRecvBuffer.buffer,len + 4,this._eRecvBuffer.buffer,0,this._recvSize);
+                        this._recvBuffer.set(this._recvBuffer.subarray(len+4,this._recvSize),0);
 
                 }
             }

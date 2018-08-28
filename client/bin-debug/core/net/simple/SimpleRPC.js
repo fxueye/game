@@ -230,14 +230,14 @@ var Net;
                             //TODO 解密
                         }
                         else {
-                            data = new ArrayBuffer(len);
-                            Simple.Packet.CopyBuffer(this._eRecvBuffer.buffer, 4, data, 0, len);
+                            data = new Uint8Array(len);
+                            data.set(this._recvBuffer.subarray(4, len), 0);
                         }
                         var pack = new Simple.Packet(data);
                         this._recvQueue.push(pack);
                         this._recvSize -= len + 4;
                         if (this._recvSize > 0)
-                            Simple.Packet.CopyBuffer(this._eRecvBuffer.buffer, len + 4, this._eRecvBuffer.buffer, 0, this._recvSize);
+                            this._recvBuffer.set(this._recvBuffer.subarray(len + 4, this._recvSize), 0);
                     }
                 }
             };
@@ -253,13 +253,8 @@ var Net;
                         }
                         var len = pack.Size;
                         var blen = Simple.BitConverter.GetBytes(len, 32);
-                        var temp = new Uint8Array(blen);
-                        var str = "";
-                        for (var i = 0; i < 4; i++) {
-                            str += "" + temp[i].toString(2);
-                        }
-                        console.log("len bytes:" + str);
-                        Simple.Packet.CopyBuffer(Simple.BitConverter.GetBytes(len, 32), 0, this._eSendBuffer.buffer, this._sendSize, 4);
+                        this._sendBuffer.set(blen, this._sendSize);
+                        // Packet.CopyBuffer(BitConverter.GetBytes(len,32),0,this._eSendBuffer.buffer,this._sendSize,4);
                         var temp = new Uint8Array(this._eSendBuffer.buffer);
                         var str = "";
                         for (var i = 0; i < len + 4; i++) {
@@ -267,7 +262,7 @@ var Net;
                         }
                         console.log("send bytes:" + str);
                         pack.Rewind();
-                        pack.GetBytes(this._eSendBuffer.buffer, this._sendSize + 4, len);
+                        pack.GetBytes(this._sendBuffer, this._sendSize + blen.byteLength, len);
                         this._sendSize += len + 4;
                     }
                     if (this._sendSize > 0) {
