@@ -14,8 +14,10 @@ var Socket = (function () {
     Socket.prototype.init = function (host, port, type) {
         this._host = host;
         this._port = port;
-        if (type != "")
+        if (type && type != "")
             this._type = type;
+        else
+            this._type = egret.WebSocket.TYPE_BINARY;
     };
     Socket.prototype.RegHander = function (hander) {
         this._hander = hander;
@@ -56,10 +58,15 @@ var Socket = (function () {
         this._socket.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onError, this);
     };
     Socket.prototype.removeEvents = function () {
-        this._socket.removeEventListener(egret.ProgressEvent.SOCKET_DATA, this.onRecv, this);
-        this._socket.removeEventListener(egret.Event.CONNECT, this.onConnect, this);
-        this._socket.removeEventListener(egret.Event.CLOSE, this.onDisConnect, this);
-        this._socket.removeEventListener(egret.IOErrorEvent.IO_ERROR, this.onError, this);
+        if (this._socket) {
+            this._socket.removeEventListener(egret.ProgressEvent.SOCKET_DATA, this.onRecv, this);
+            this._socket.removeEventListener(egret.Event.CONNECT, this.onConnect, this);
+            this._socket.removeEventListener(egret.Event.CLOSE, this.onDisConnect, this);
+            this._socket.removeEventListener(egret.IOErrorEvent.IO_ERROR, this.onError, this);
+        }
+        else {
+            console.error("socket is null");
+        }
     };
     Socket.prototype.onRecv = function (e) {
         // var msg = this._socket.readUTF();
@@ -129,7 +136,9 @@ var Socket = (function () {
     };
     Socket.prototype.disCurrentConnect = function () {
         this.removeEvents();
-        this._socket.close();
+        if (this._socket) {
+            this._socket.close();
+        }
         this._socket = null;
         this._isConnecting = false;
     };

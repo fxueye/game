@@ -17,8 +17,10 @@ class Socket {
 	public init(host:string,port:number,type?:string):void{
 		this._host = host;
 		this._port = port;
-		if(type != "")
+		if(type && type != "")
 			this._type = type;
+		else 
+			this._type = egret.WebSocket.TYPE_BINARY;
 		
 	}
 	public RegHander(hander:ISocketHander){
@@ -58,10 +60,15 @@ class Socket {
         this._socket.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onError, this);
     }
     private removeEvents():void {
-        this._socket.removeEventListener(egret.ProgressEvent.SOCKET_DATA, this.onRecv, this);
-        this._socket.removeEventListener(egret.Event.CONNECT, this.onConnect, this);
-        this._socket.removeEventListener(egret.Event.CLOSE, this.onDisConnect, this);
-        this._socket.removeEventListener(egret.IOErrorEvent.IO_ERROR, this.onError, this);
+		if(this._socket){
+			this._socket.removeEventListener(egret.ProgressEvent.SOCKET_DATA, this.onRecv, this);
+			this._socket.removeEventListener(egret.Event.CONNECT, this.onConnect, this);
+			this._socket.removeEventListener(egret.Event.CLOSE, this.onDisConnect, this);
+			this._socket.removeEventListener(egret.IOErrorEvent.IO_ERROR, this.onError, this);
+		}else{
+			console.error("socket is null");
+		}
+        
     }
 	private onRecv(e:egret.Event):void {
 		// var msg = this._socket.readUTF();
@@ -129,7 +136,9 @@ class Socket {
 
 	private disCurrentConnect(){
         this.removeEvents();
-        this._socket.close();
+		if(this._socket){
+        	this._socket.close();
+		}
         this._socket = null;
         this._isConnecting = false;
     }

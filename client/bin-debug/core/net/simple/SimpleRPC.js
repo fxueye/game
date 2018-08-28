@@ -13,7 +13,9 @@ var Net;
                 this._recvSize = 0;
                 this._encryptKey = null;
                 this._sendBuffer = null;
+                this._eSendBuffer = null;
                 this._recvBuffer = null;
+                this._eRecvBuffer = null;
                 this._heartBeatSendTime = -1;
                 this._heartBeatRecvTime = -1;
                 this._heartBeatDelay = -1;
@@ -72,7 +74,9 @@ var Net;
                 this._socketConn = new Socket(this._name);
                 this._socketConn.RegHander(this);
                 this._sendBuffer = new Uint8Array(SimpleRPC.SEND_BUFF_SIZE);
+                this._eSendBuffer = new egret.ByteArray(this._sendBuffer);
                 this._recvBuffer = new Uint8Array(SimpleRPC.RECV_BUFF_SIZE);
+                this._eRecvBuffer = new egret.ByteArray(this._recvBuffer);
                 this._seqID = 0;
                 this._sendQueue = new Array();
                 this._recvQueue = new Array();
@@ -128,6 +132,35 @@ var Net;
                     return false;
                 }
                 var seqID = this.increaseSeqID();
+                params.unshift(opcode);
+                params.unshift(seqID);
+                var pack = Simple.PackUtil.CreatePacket.apply(Simple.PackUtil, params);
+                this.SendPacket(pack);
+                var req = new Simple.Request(seqID, opcode, pack);
+                this._lastRequest = req;
+                return true;
+            };
+            SimpleRPC.prototype.Send = function (opcode) {
+                var params = [];
+                for (var _i = 1; _i < arguments.length; _i++) {
+                    params[_i - 1] = arguments[_i];
+                }
+                if (!this.IsConnected) {
+                    this.Disconnect();
+                    return false;
+                }
+                params.unshift(opcode);
+                params.unshift(0);
+                var pack = Simple.PackUtil.CreatePacket.apply(Simple.PackUtil, params);
+                this.SendPacket(pack);
+            };
+            SimpleRPC.prototype.SendPacket = function (pack) {
+                if (!this.IsConnected) {
+                    this.Disconnect();
+                    return false;
+                }
+                pack.Rewind();
+                this._sendQueue.push(pack);
             };
             SimpleRPC.prototype.increaseSeqID = function () {
                 if (this._seqID >= 32767) {
@@ -137,8 +170,33 @@ var Net;
                 return this._seqID;
             };
             SimpleRPC.prototype.update = function () {
+                this.ProcessMsg();
+                this.OnSend();
+            };
+            SimpleRPC.prototype.CheckHeartBeat = function () {
+                //websocket 有自己的心跳检查
+            };
+            SimpleRPC.prototype.ProcessMsg = function () {
+                while (this._recvQueue.length > 0) {
+                    var pack = this._recvQueue.pop();
+                    if (pack == null)
+                        continue;
+                    try {
+                        var seqID = pack.GetShort();
+                        var opcode = pack.GetShort();
+                        if (seqID > 0 && this._lastRequest != null && this._lastRequest.SeqID == seqID) {
+                            this._lastRequest = null;
+                        }
+                        var cmd = new Simple.Command(seqID, opcode, pack);
+                        this._invoker.Invoke(cmd);
+                    }
+                    catch (e) {
+                        console.error(e);
+                    }
+                }
             };
             SimpleRPC.prototype.OnConnect = function () {
+                console.log("onConnect");
                 this._lastRequest = null;
                 if (this._onConnect != null) {
                     this._onConnect.call(this._obj);
@@ -155,8 +213,68 @@ var Net;
             SimpleRPC.prototype.OnNoConnect = function () {
             };
             SimpleRPC.prototype.OnRecv = function () {
+                if (this.IsConnected) {
+                    this._socketConn.Receive(this._eRecvBuffer);
+                    this._recvSize += this._eRecvBuffer.buffer.byteLength;
+                    while (true) {
+                        if (this._recvSize < 4)
+                            break;
+                        var len = Simple.BitConverter.ToInt32(this._eRecvBuffer.buffer, 0);
+                        if (len > SimpleRPC.RECV_BUFF_SIZE || len < 0) {
+                            throw new Error("too huge package on receive, len=" + len);
+                        }
+                        if (this._recvSize < len + 4)
+                            break;
+                        var data = null;
+                        if (this._encryptKey != null) {
+                            //TODO 解密
+                        }
+                        else {
+                            data = new ArrayBuffer(len);
+                            Simple.Packet.CopyBuffer(this._eRecvBuffer.buffer, 4, data, 0, len);
+                        }
+                        var pack = new Simple.Packet(data);
+                        this._recvQueue.push(pack);
+                        this._recvSize -= len + 4;
+                        if (this._recvSize > 0)
+                            Simple.Packet.CopyBuffer(this._eRecvBuffer.buffer, len + 4, this._eRecvBuffer.buffer, 0, this._recvSize);
+                    }
+                }
             };
             SimpleRPC.prototype.OnSend = function () {
+                if (this.IsConnected) {
+                    while (this._sendQueue.length > 0) {
+                        var pack = this._sendQueue.pop();
+                        if (this._encryptKey != null) {
+                            //TODO加密
+                        }
+                        if (pack.Size + this._sendSize > SimpleRPC.SEND_BUFF_SIZE) {
+                            break;
+                        }
+                        var len = pack.Size;
+                        var blen = Simple.BitConverter.GetBytes(len, 32);
+                        var temp = new Uint8Array(blen);
+                        var str = "";
+                        for (var i = 0; i < 4; i++) {
+                            str += "" + temp[i].toString(2);
+                        }
+                        console.log("len bytes:" + str);
+                        Simple.Packet.CopyBuffer(Simple.BitConverter.GetBytes(len, 32), 0, this._eSendBuffer.buffer, this._sendSize, 4);
+                        var temp = new Uint8Array(this._eSendBuffer.buffer);
+                        var str = "";
+                        for (var i = 0; i < len + 4; i++) {
+                            str += "" + temp[i];
+                        }
+                        console.log("send bytes:" + str);
+                        pack.Rewind();
+                        pack.GetBytes(this._eSendBuffer.buffer, this._sendSize + 4, len);
+                        this._sendSize += len + 4;
+                    }
+                    if (this._sendSize > 0) {
+                        var sendCount = this._socketConn.Send(this._eSendBuffer);
+                        this._sendSize = 0;
+                    }
+                }
             };
             SimpleRPC.prototype.OnError = function () {
             };

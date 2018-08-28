@@ -9,7 +9,7 @@ var Net;
             function BitConverter() {
             }
             BitConverter.GetBytes = function (a, b, c) {
-                if ((typeof a === "number") && (typeof b === "number") && (typeof c === "boolean")) {
+                if ((typeof a === "number") && (typeof b === "number")) {
                     if (c) {
                         var ba = new ArrayBuffer(b / 8);
                         var dv = new DataView(ba);
@@ -19,6 +19,7 @@ var Net;
                         else if (b == 64) {
                             dv.setFloat64(0, a);
                         }
+                        return ba;
                     }
                     else {
                         var ba = new ArrayBuffer(b / 8);

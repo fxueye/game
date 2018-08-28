@@ -24,7 +24,8 @@ var ServerView = (function (_super) {
         this.listServer.dataProvider = this._serverData;
         this.listServer.useVirtualLayout = true;
         this.listServer.itemRenderer = ServerItem;
-        this.btnSelectServer.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSelectServer, this);
+        this.btnSelectServer.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
+        this.btnSend.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
         var openId = egret.localStorage.getItem("jrdh_openid");
         if (!openId) {
             openId = Math.floor(Math.random() * 1000000000) + "";
@@ -33,25 +34,47 @@ var ServerView = (function (_super) {
         this.elabOpenId.text = openId;
         // Commder.Instance.login(loginInfo.openId,loginInfo.token,loginInfo.platform);
     };
-    ServerView.prototype.onSelectServer = function () {
+    ServerView.prototype.onClick = function (evt) {
         GameUtils.play(GameSound.BUTTON_1);
-        var index = this.listServer.selectedIndex;
-        if (index < 0) {
-            Toast.makeToast("请选择服务器!").show();
-            return;
+        if (evt.target.hashCode == this.btnSelectServer.hashCode) {
+            var index = this.listServer.selectedIndex;
+            if (index < 0) {
+                Toast.makeToast("请选择服务器!").show();
+                return;
+            }
+            App.Instance.Server = this._serverData.source[index].Id;
+            var config = AppConfig.Dic.get(App.Instance.Server);
+            App.Instance.RPC.Connect(config.SocketIp, config.SocketPort);
+            // egret.localStorage.setItem("jrdh_openid",this.elabOpenId.text);
+            // var a = ["你好！","abcd","##"];
+            // for(var k of a){
+            // 	var bs = Net.Simple.BitConverter.GetBytes(k);
+            // 	var st = Net.Simple.BitConverter.ToString(bs,0,bs.byteLength);
+            // 	console.log("st:"+st);
+            // }
         }
-        App.Instance.Server = this._serverData.source[index].Id;
-        var config = AppConfig.Dic.get(App.Instance.Server);
-        App.Instance.RPC.Connect(config.SocketIp, config.SocketPort);
-        egret.localStorage.setItem("jrdh_openid", this.elabOpenId.text);
-        var a = ["你好！", "abcd", "##"];
-        for (var _i = 0, a_1 = a; _i < a_1.length; _i++) {
-            var k = a_1[_i];
-            var bs = Net.Simple.BitConverter.GetBytes(k);
-            var st = Net.Simple.BitConverter.ToString(bs, 0, bs.byteLength);
-            console.log("st:" + st);
+        else if (evt.target.hashCode == this.btnSend.hashCode) {
+            App.Instance.RPC.Call(0);
+            // var sock:egret.WebSocket = new egret.WebSocket();
+            // sock.type = egret.WebSocket.TYPE_BINARY;
+            // sock.addEventListener( egret.ProgressEvent.SOCKET_DATA, (evt:egret.Event)=>{
+            // 	var byte:egret.ByteArray = new egret.ByteArray();
+            // 	sock.readBytes(byte);
+            // 	console.log("收到数据：" + byte.readInt());
+            // 	console.log("收到数据：" + byte.readBoolean());
+            // }, this );
+            // sock.addEventListener( egret.Event.CONNECT, ()=>{
+            // 	for(var i = 0; i < 10; i++){
+            // 		var byte:egret.ByteArray = new egret.ByteArray();
+            // 		byte.writeInt(1);
+            // 		byte.writeBoolean(false);
+            // 		for(var i = 0; i < 10 ; i++){
+            // 			sock.writeBytes(byte,0,byte.bytesAvailable);
+            // 		}
+            // 	}
+            // }, this );
+            // sock.connect("192.168.1.188", 8001);
         }
-        console.log("####" + (typeof a));
         // Commder.Instance.login(this.elabOpenId.text,"","");
     };
     ServerView.prototype.initData = function () {

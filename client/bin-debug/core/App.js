@@ -30,8 +30,10 @@ var App = (function () {
     });
     App.prototype.init = function () {
         //初始化操作
-        if (!this._rpc)
-            this._rpc = new RPC();
+        if (!this._rpc) {
+            this._rpc = new Net.Simple.SimpleRPC("rpc");
+            this._rpc.Init(new ClientCmdsInvoker(new ClientCmds(this._rpc)));
+        }
         this.EventMgr.addEventListener(RPC.SOCK_NETWORK_ERROR, this.onNetError, this);
         egret.lifecycle.onPause = this.onPause;
         egret.lifecycle.onResume = this.onResume;
@@ -43,7 +45,7 @@ var App = (function () {
     App.prototype.onNetError = function () {
         Dialog.makeDialog("提示", "与服务器断开连接!", false, this, function () {
             //TODO 重启重新连接socket 操作
-            App.Instance.RPC.Socket.disconnect();
+            App.Instance.RPC.Reconnect(false);
             App.Instance.ViewMgr.closeAll();
             App.Instance.ViewMgr.push(ModuleConst.LOADING, false, true);
         }).open();
@@ -101,7 +103,8 @@ var App = (function () {
     Object.defineProperty(App.prototype, "RPC", {
         get: function () {
             if (!this._rpc) {
-                this._rpc = new RPC();
+                this._rpc = new Net.Simple.SimpleRPC();
+                this._rpc.Init(new ClientCmdsInvoker(new ClientCmds(this._rpc)));
             }
             return this._rpc;
         },

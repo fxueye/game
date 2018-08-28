@@ -24,20 +24,43 @@ var Net;
                             console.error("call server , params is null, opcode = " + opcode);
                             continue;
                         }
+                        PackUtil.Pack(pack, p);
                     }
                 }
+                pack.Rewind();
+                return pack;
             };
             PackUtil.Pack = function (pack, val) {
-                switch (typeof val) {
-                    case "number":
-                        pack.PutInt(val);
-                        break;
-                    case "boolean":
-                        pack.PutBool(val);
-                        break;
-                    case "string":
-                        pack.PutString(val);
-                        break;
+                var type = typeof val;
+                if (type === "number") {
+                    pack.PutInt(val);
+                }
+                else if (type === "boolean") {
+                    pack.PutBool(val);
+                }
+                else if (type === "string") {
+                    pack.PutString(val);
+                }
+                else if (type === "object") {
+                    // if(val.toString() == "Array"){
+                    // }
+                    // if(val instanceof IWrapper){
+                    // 	var w = <IWrapper>val;
+                    // 	w.Encode(pack);
+                    // }
+                }
+            };
+            PackUtil.Unpack = function (type, pack) {
+                if (type === "number") {
+                    return pack.GetInt();
+                }
+                else if (type === "boolean") {
+                    return pack.GetBool();
+                }
+                else if (type === "string") {
+                    return pack.GetString();
+                }
+                else if (type === "object") {
                 }
             };
             return PackUtil;

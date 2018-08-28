@@ -2,13 +2,13 @@ namespace Net.Simple{
    export class BitConverter{
         public constructor(){
         }
-        public static GetBytes(val:string):ArrayBuffer;
-        public static GetBytes(val:boolean):ArrayBuffer;
-        public static GetBytes(val:number,t:number):ArrayBuffer;
-        public static GetBytes(val:number,t:number,f:boolean):ArrayBuffer;
+        public static GetBytes(val:string):Uint8Array;
+        public static GetBytes(val:boolean):Uint8Array;
+        public static GetBytes(val:number,t:number):Uint8Array;
+        public static GetBytes(val:number,t:number,f:boolean):Uint8Array;
 
-        public static GetBytes(a:any,b?:any,c?:any):ArrayBuffer{
-            if((typeof a === "number") && (typeof b === "number") && (typeof c === "boolean")){
+        public static GetBytes(a:any,b?:any,c?:any):Uint8Array{
+            if((typeof a === "number") && (typeof b === "number")){
                 if(c){
                     var ba = new ArrayBuffer(b / 8);
                     var dv = new DataView(ba);
@@ -17,6 +17,7 @@ namespace Net.Simple{
                     }else if(b == 64){
                         dv.setFloat64(0,a);
                     }
+                    return new Uint8Array(ba);
                 }else{
                     var ba = new ArrayBuffer(b / 8);
                     var dv = new DataView(ba);
@@ -29,16 +30,16 @@ namespace Net.Simple{
                     }else if(b == 64){
                         BitConverter.setInt64(a,dv,0);
                     }
-                    return ba;
+                    return new Uint8Array(ba);
                 }
             }else if((typeof a === "boolean")){
                 var ba = new ArrayBuffer(1);
                 var dv = new DataView(ba);
                 dv.setUint8(0,a ? 1 : 0);
-                return ba;
+                return new Uint8Array(ba);
             }else if((typeof a === "string")){
                 var ub =  BitConverter.encodeUTF8(a);
-                return ub.buffer;
+                return ub;
             }
         }
 

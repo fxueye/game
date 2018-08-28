@@ -2,10 +2,10 @@ namespace Net.Simple{
     export class Packet{
         public static readonly PACKET_DEFAULT_LEN:number = 256;
         public static readonly PACKET_MAX_LEN:number = 1024 * 1024;
-        protected buffer:ArrayBuffer;
+        protected buffer:Uint8Array;
         protected pos:number;
         protected size:number;
-        public constructor(bytes?:ArrayBuffer,length?:number,index:number = 0){
+        public constructor(bytes?:Uint8Array,length?:number,index:number = 0){
             if(length != null && length > Packet.PACKET_MAX_LEN){
                 throw new Error("init len is larger than max length: " + Packet.PACKET_MAX_LEN);
             }
@@ -19,7 +19,7 @@ namespace Net.Simple{
                 this.buffer = bytes;
                 this.size = bytes.byteLength;
             }else{
-                this.buffer = new ArrayBuffer(len);
+                this.buffer = new Uint8Array(len);
             }
         }
 
@@ -59,25 +59,27 @@ namespace Net.Simple{
         public End():boolean{
             return this.pos == this.size;
         }
-        public GetData():ArrayBuffer{
-            var bytes = new ArrayBuffer(this.size);
-            Packet.CopyBuffer(this.buffer,bytes,this.size);
-            return bytes;
+        public GetData():Uint8Array{
+            return this.buffer;
         }
-        public PutBytes(bytes:ArrayBuffer){
+        public PutBytes(bytes:Uint8Array){
             this.EnsureCapacity(bytes.byteLength);
-            Packet.CopyBuffer(bytes,0,this.buffer,this.pos,bytes.byteLength);
+            this.buffer.set(bytes,this.pos);
             this.pos += bytes.byteLength;
             if(this.size < this.pos) this.size = this.pos;
         }
-        public GetBytes(dest:ArrayBuffer,start:number,length:number){
-            Packet.CopyBuffer(this.buffer,this.pos,dest,start,length);
+        public GetBytes(dest:Uint8Array,start:number,length:number){
+            if(!dest){
+                return;
+            }
+            dest.set(this.buffer.subarray(this.pos,this.pos + length),start);
             this.pos += length;
         }
         public PutBool(value:boolean){
             this.EnsureCapacity(1);
             var src = BitConverter.GetBytes(value);
-            Packet.CopyBuffer(src,0,this.buffer,this.pos,src.byteLength);
+            // Packet.CopyBuffer(src,0,this.buffer,this.pos,src.byteLength);
+            this.buffer.set(src,this.pos);
             this.pos += src.byteLength;
             if(this.size < this.pos) this.size = this.pos;
         }
@@ -89,7 +91,7 @@ namespace Net.Simple{
         public PutShort(val:number){
             this.EnsureCapacity(2);
             var src = BitConverter.GetBytes(val,16);
-            Packet.CopyBuffer(src,0,this.buffer,this.pos,src.byteLength);
+            this.buffer.set(src,this.pos);
             this.pos += src.byteLength;
             if(this.size < this.pos) this.size = this.pos;
         }
@@ -101,7 +103,7 @@ namespace Net.Simple{
         public PutInt(val:number){
             this.EnsureCapacity(4);
             var src = BitConverter.GetBytes(val,32);
-            Packet.CopyBuffer(src,0,this.buffer,this.pos,src.byteLength);
+            this.buffer.set(src,this.pos);
             this.pos += src.byteLength;
             if(this.size < this.pos) this.size = this.pos;
         }
@@ -113,7 +115,7 @@ namespace Net.Simple{
         public PutLong(val:number){
             this.EnsureCapacity(8);
             var src = BitConverter.GetBytes(val,64);
-            Packet.CopyBuffer(src,0,this.buffer,this.pos,src.byteLength);
+            this.buffer.set(src,this.pos);
             this.pos += src.byteLength;
             if(this.size < this.pos) this.size = this.pos;
         }
@@ -125,7 +127,7 @@ namespace Net.Simple{
         public PutFloat(val:number){
             this.EnsureCapacity(4);
             var src = BitConverter.GetBytes(val,32,true);
-            Packet.CopyBuffer(src,0,this.buffer,this.pos,src.byteLength);
+            this.buffer.set(src,this.pos);
             this.pos += src.byteLength;
             if(this.size < this.pos) this.size = this.pos;
             
@@ -152,7 +154,7 @@ namespace Net.Simple{
             var len = src.byteLength;
             this.EnsureCapacity(2 + len);
             this.PutShort(len);
-            Packet.CopyBuffer(src,0,this.buffer,this.pos,len);
+            this.buffer.set(src,this.pos);
             this.pos += len;
             if(this.size < this.pos) this.size = this.pos;
         }
@@ -173,66 +175,9 @@ namespace Net.Simple{
             }
             let newCapacity = requiredCapacity > this.Capability * 2 ? requiredCapacity : this.Capability * 2;
             newCapacity = requiredCapacity > Packet.PACKET_MAX_LEN ? Packet.PACKET_MAX_LEN : newCapacity;
-            let newBuffer = new ArrayBuffer(newCapacity);
-            Packet.CopyBuffer(this.buffer,newBuffer,this.size);
+            let newBuffer = new Uint8Array(newCapacity);
+            newBuffer.set(this.buffer,0);
             this.buffer = newBuffer;
         }
-        public static CopyBuffer(src:ArrayBuffer,idx:number,dst:ArrayBuffer,index:number,len:number):void;
-        public static CopyBuffer(src:ArrayBuffer,dst:ArrayBuffer,size:any):void;
-
-        public static CopyBuffer(a:any,b:any,c?:any,d?:any,e?:any):any{
-            let src = null;
-            let dst = null;
-            let size = null;
-            let idx = null;
-            let index = null;
-            let len = null;
-
-
-            if(a instanceof ArrayBuffer){
-                src = <ArrayBuffer> a;
-            }
-            if(typeof b === "number"){
-                idx = b;
-            }else if(b instanceof ArrayBuffer){
-                dst = <ArrayBuffer> b;
-            }
-            if(c instanceof ArrayBuffer){
-                dst = <ArrayBuffer> c;
-            }else if(typeof c === "number"){
-                size = c;
-            }
-            if(typeof d === "number"){
-                index = d;
-            }
-            if(typeof e === "number"){
-                len = e;
-            }
-            if((src instanceof ArrayBuffer) && (dst instanceof ArrayBuffer) ){
-                let dstArray:Int8Array = new Int8Array(dst);
-                let srcArray:Int8Array = new Int8Array(src);
-                if((typeof size === "number")){
-                    for(var i =0;i < size ; i++){
-                        dstArray[i] = srcArray[i];
-                    }
-                }
-                if((typeof idx === "number") && (typeof index === "number") && (typeof len === "number")){
-                    let srcLen = src.byteLength;
-                    let endIdx = idx + srcLen;
-                    for(var i = idx; i < len; i++){
-                        if(idx < endIdx){
-                            dstArray[i] = srcArray[i];
-                        }else{
-                            //TODO
-                        }
-                    }
-                }
-            }
-            
-            
-        }
-
-
-
     }
 }

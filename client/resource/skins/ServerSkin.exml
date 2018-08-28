@@ -12,7 +12,8 @@
 			<e:Scroller width="259" x="166" y="0" anchorOffsetX="0" anchorOffsetY="0" height="201">
 				<e:List id="listServer" anchorOffsetY="0"/>
 			</e:Scroller>
-			<e:Button id="btnSelectServer" label="登录" x="211.61" y="275.44" anchorOffsetX="0" width="155.39" anchorOffsetY="0" height="59.09"/>
+			<e:Button id="btnSelectServer" label="连接" y="275.44" anchorOffsetX="0" width="155.39" anchorOffsetY="0" height="59.09" left="80"/>
+			<e:Button id="btnSend" label="发送" y="275.44" anchorOffsetX="0" width="155.39" anchorOffsetY="0" height="59.09" right="80"/>
 			<e:EditableText id="elabOpenId" width="185" height="32" text="openid" y="220" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0.5" fontFamily="SimHei" size="20" verticalAlign="middle" textAlign="center"/>
 		</e:Group>
 	</e:Group>

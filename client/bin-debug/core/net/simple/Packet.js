@@ -17,7 +17,13 @@ var Net;
                 var len = length ? length : Packet.PACKET_DEFAULT_LEN;
                 this.pos = index ? index : 0;
                 this.size = length ? length : 0;
-                this.buffer = new ArrayBuffer(len);
+                if (bytes) {
+                    this.buffer = bytes;
+                    this.size = bytes.byteLength;
+                }
+                else {
+                    this.buffer = new ArrayBuffer(len);
+                }
             }
             Object.defineProperty(Packet.prototype, "Position", {
                 get: function () {
