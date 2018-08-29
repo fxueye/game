@@ -22,7 +22,7 @@ class ClientCmdsInvoker implements Net.Simple.IInvoker {
 		}
 		if(this._onCmdInvoked != null && this._obj != null){
 			this._onCmdInvoked.call(this._obj,cmd.Opcode);
-			
+
 		}
 	}	
 

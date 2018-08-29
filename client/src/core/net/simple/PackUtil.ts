@@ -1,4 +1,8 @@
 namespace Net.Simple{
+	/** number == int 
+	 * 只支持基础类型
+	 */
+
 	export class PackUtil {
 		public constructor() {
 		}
@@ -29,13 +33,7 @@ namespace Net.Simple{
 			}else if(type === "string"){
 				pack.PutString(val);
 			}else if(type === "object"){
-				// if(val.toString() == "Array"){
-
-				// }
-				// if(val instanceof IWrapper){
-				// 	var w = <IWrapper>val;
-				// 	w.Encode(pack);
-				// }
+				
 			}
 			
 		}
