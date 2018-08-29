@@ -120,7 +120,7 @@ var Net;
                     this.size = this.pos;
             };
             Packet.prototype.GetShort = function () {
-                var rst = Simple.BitConverter.ToInt32(this.buffer, this.pos);
+                var rst = Simple.BitConverter.ToInt16(this.buffer, this.pos);
                 this.pos += 2;
                 return rst;
             };

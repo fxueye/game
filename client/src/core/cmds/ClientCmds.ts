@@ -7,6 +7,6 @@ class ClientCmds implements IClientCmds{
 
 	HeartBeat(cmd:Net.Simple.Command):void{
 		console.log("opcode:" + cmd.Opcode);
-		this._rpc.Send(0);
+		// this._rpc.Send(0);
 	}
 }

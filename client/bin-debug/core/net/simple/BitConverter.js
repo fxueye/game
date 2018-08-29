@@ -14,10 +14,10 @@ var Net;
                         var ba = new ArrayBuffer(b / 8);
                         var dv = new DataView(ba);
                         if (b == 32) {
-                            dv.setFloat32(0, a);
+                            dv.setFloat32(0, a, BitConverter.littleEndian);
                         }
                         else if (b == 64) {
-                            dv.setFloat64(0, a);
+                            dv.setFloat64(0, a, BitConverter.littleEndian);
                         }
                         return new Uint8Array(ba);
                     }
@@ -28,10 +28,10 @@ var Net;
                             dv.setUint8(0, a);
                         }
                         else if (b == 16) {
-                            dv.setUint16(0, a);
+                            dv.setUint16(0, a, BitConverter.littleEndian);
                         }
                         else if (b == 32) {
-                            dv.setUint32(0, a);
+                            dv.setUint32(0, a, BitConverter.littleEndian);
                         }
                         else if (b == 64) {
                             BitConverter.setInt64(a, dv, 0);
@@ -82,20 +82,20 @@ var Net;
                     dv.setUint8(pos++, b[i]);
             };
             BitConverter.ToString = function (b, pos, length) {
-                var bytes = new Uint8Array(b, pos, length);
+                var bytes = b.subarray(pos, length);
                 return BitConverter.decodeUTF8(bytes);
             };
             BitConverter.ToNumber = function (b, pos, t, f) {
                 if (t === void 0) { t = 32; }
                 if (f === void 0) { f = false; }
-                var v = new DataView(b);
+                var v = new DataView(b.buffer);
                 var val = 0;
                 if (f) {
                     if (t == 32) {
-                        val = v.getFloat32(pos);
+                        val = v.getFloat32(pos, BitConverter.littleEndian);
                     }
                     else if (t == 64) {
-                        val = v.getFloat64(pos);
+                        val = v.getFloat64(pos, BitConverter.littleEndian);
                     }
                 }
                 else {
@@ -103,10 +103,10 @@ var Net;
                         val = v.getUint8(pos);
                     }
                     else if (t == 16) {
-                        val = v.getUint16(pos);
+                        val = v.getUint16(pos, BitConverter.littleEndian);
                     }
                     else if (t == 32) {
-                        val = v.getUint32(pos);
+                        val = v.getUint32(pos, BitConverter.littleEndian);
                     }
                     else if (t == 64) {
                         val = BitConverter.getInt64(v, pos);
@@ -133,12 +133,12 @@ var Net;
                 return BitConverter.ToNumber(b, pos, 64, false);
             };
             BitConverter.ToBoolean = function (b, pos) {
-                var v = new DataView(b);
+                var v = new DataView(b.buffer);
                 var val = v.getUint8(pos) == 1 ? true : false;
                 return val;
             };
             BitConverter.ToByte = function (b, pos) {
-                var v = new DataView(b);
+                var v = new DataView(b.buffer);
                 var val = v.getUint8(pos);
                 return val;
             };
@@ -342,6 +342,7 @@ var Net;
             BitConverter.div = function (n, d) {
                 return Math.floor(n / d);
             };
+            BitConverter.littleEndian = true;
             BitConverter.EOF_byte = -1;
             BitConverter.EOF_code_point = -1;
             return BitConverter;

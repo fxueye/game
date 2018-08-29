@@ -1,5 +1,6 @@
 namespace Net.Simple{
    export class BitConverter{
+        private static littleEndian = true;
         public constructor(){
         }
         public static GetBytes(val:string):Uint8Array;
@@ -13,9 +14,9 @@ namespace Net.Simple{
                     var ba = new ArrayBuffer(b / 8);
                     var dv = new DataView(ba);
                     if(b == 32){
-                        dv.setFloat32(0,a);
+                        dv.setFloat32(0,a,BitConverter.littleEndian);
                     }else if(b == 64){
-                        dv.setFloat64(0,a);
+                        dv.setFloat64(0,a,BitConverter.littleEndian);
                     }
                     return new Uint8Array(ba);
                 }else{
@@ -24,9 +25,9 @@ namespace Net.Simple{
                     if(b == 8){
                         dv.setUint8(0,a);
                     }else if(b == 16){
-                        dv.setUint16(0,a);
+                        dv.setUint16(0,a,BitConverter.littleEndian);
                     }else if(b == 32){
-                        dv.setUint32(0,a);
+                        dv.setUint32(0,a,BitConverter.littleEndian);
                     }else if(b == 64){
                         BitConverter.setInt64(a,dv,0);
                     }
@@ -77,57 +78,57 @@ namespace Net.Simple{
             }
             for(let i = 0; i < b.length; ++i) dv.setUint8(pos++, b[i]);
         }
-        public static ToString(b:ArrayBuffer,pos:number,length:number):string{
-            let bytes = new Uint8Array(b, pos, length);
+        public static ToString(b:Uint8Array,pos:number,length:number):string{
+            let bytes = b.subarray(pos, length);
             return BitConverter.decodeUTF8(bytes);
         }
-        public static ToNumber(b:ArrayBuffer,pos:number,t:number = 32,f:boolean = false):number{
-            var v = new DataView(b);
+        public static ToNumber(b:Uint8Array,pos:number,t:number = 32,f:boolean = false):number{
+            var v = new DataView(b.buffer);
             var val = 0;
             if(f){
                 if(t == 32){
-                    val = v.getFloat32(pos);
+                    val = v.getFloat32(pos,BitConverter.littleEndian);
                 }else if(t == 64){
-                    val = v.getFloat64(pos);
+                    val = v.getFloat64(pos,BitConverter.littleEndian);
                 }
             }else{
                 if(t == 8){
                     val = v.getUint8(pos);
                 }else if(t == 16){
-                    val = v.getUint16(pos);
+                    val = v.getUint16(pos,BitConverter.littleEndian);
                 }else if(t == 32){
-                    val = v.getUint32(pos);
+                    val = v.getUint32(pos,BitConverter.littleEndian);
                 }else if(t == 64){
                     val = BitConverter.getInt64(v,pos);
                 }
             }
             return val;
         }
-        public static ToDouble(b:ArrayBuffer,pos:number):number{
+        public static ToDouble(b:Uint8Array,pos:number):number{
             return BitConverter.ToNumber(b,pos,64,true);
         }
-        public static ToFloat32(b:ArrayBuffer,pos:number):number{
+        public static ToFloat32(b:Uint8Array,pos:number):number{
             return BitConverter.ToNumber(b,pos,32,true);
         }
-        public static ToFloat64(b:ArrayBuffer,pos:number):number{
+        public static ToFloat64(b:Uint8Array,pos:number):number{
             return BitConverter.ToNumber(b,pos,64,true);
         }
-        public static ToInt16(b:ArrayBuffer,pos:number):number{
+        public static ToInt16(b:Uint8Array,pos:number):number{
             return BitConverter.ToNumber(b,pos,16,false);
         }
-        public static ToInt32(b:ArrayBuffer,pos:number):number{
+        public static ToInt32(b:Uint8Array,pos:number):number{
             return BitConverter.ToNumber(b,pos,32,false);
         }
-        public static ToInt64(b:ArrayBuffer,pos:number):number{
+        public static ToInt64(b:Uint8Array,pos:number):number{
             return BitConverter.ToNumber(b,pos,64,false);
         }
-        public static ToBoolean(b:ArrayBuffer,pos:number):boolean{
-            var v = new DataView(b);
+        public static ToBoolean(b:Uint8Array,pos:number):boolean{
+            var v = new DataView(b.buffer);
             var val =  v.getUint8(pos) == 1 ? true : false;
             return val;
         }
-        public static ToByte(b:ArrayBuffer,pos:number):number {
-            var v = new DataView(b);
+        public static ToByte(b:Uint8Array,pos:number):number {
+            var v = new DataView(b.buffer);
             var val = v.getUint8(pos);
             return val;
         }

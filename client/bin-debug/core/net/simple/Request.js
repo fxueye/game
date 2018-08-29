@@ -32,6 +32,13 @@ var Net;
                 enumerable: true,
                 configurable: true
             });
+            Request.prototype.func = function (func, obj) {
+                this._func = func;
+                this._obj = obj;
+            };
+            Request.prototype.Call = function (cmd) {
+                this._func.call(this._obj, cmd);
+            };
             return Request;
         }());
         Simple.Request = Request;

@@ -7,7 +7,7 @@ var ClientCmds = (function () {
     }
     ClientCmds.prototype.HeartBeat = function (cmd) {
         console.log("opcode:" + cmd.Opcode);
-        this._rpc.Send(0);
+        // this._rpc.Send(0);
     };
     return ClientCmds;
 }());

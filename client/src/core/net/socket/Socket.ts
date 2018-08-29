@@ -49,8 +49,12 @@ class Socket {
 		this._socket.connect(this._host,this._port);
 		
 	}
-	public Send(msg:egret.ByteArray):void{
-		this._socket.writeBytes(msg, 0, msg.length);
+	public Send(msg:egret.ByteArray,size?:number):void{
+		if(size > 0){
+			this._socket.writeBytes(msg, 0, size);	
+		}else{
+			this._socket.writeBytes(msg, 0, msg.length);
+		}
 	}
 	
 	private addEvents() {

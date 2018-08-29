@@ -3,6 +3,8 @@ namespace Net.Simple{
         private _pack:Packet;
         private _seqID:number;
         private _opcode:number;
+        private _func:Function;
+        private _obj:any;
 
         public constructor(seqID:number,opcode:number,pack:Packet){
             this._pack = pack;
@@ -17,6 +19,13 @@ namespace Net.Simple{
         }
         public get Pack():Packet{
             return this._pack;
+        }
+        public func(func:Function,obj:any){
+            this._func = func;
+            this._obj = obj;
+        }
+        public Call(cmd:Net.Simple.Command){
+            this._func.call(this._obj,cmd);
         }
     }
 }

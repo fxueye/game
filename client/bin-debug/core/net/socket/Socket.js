@@ -48,8 +48,13 @@ var Socket = (function () {
         this.addEvents();
         this._socket.connect(this._host, this._port);
     };
-    Socket.prototype.Send = function (msg) {
-        this._socket.writeBytes(msg, 0, msg.length);
+    Socket.prototype.Send = function (msg, size) {
+        if (size > 0) {
+            this._socket.writeBytes(msg, 0, size);
+        }
+        else {
+            this._socket.writeBytes(msg, 0, msg.length);
+        }
     };
     Socket.prototype.addEvents = function () {
         this._socket.addEventListener(egret.ProgressEvent.SOCKET_DATA, this.onRecv, this);

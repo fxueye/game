@@ -41,7 +41,7 @@ namespace Net.Simple{
         public get Remaining():number{
             return this.size - this.pos;
         }
-        public get Buffer():ArrayBuffer{
+        public get Buffer():Uint8Array{
             return this.buffer;
         }
 
@@ -96,7 +96,7 @@ namespace Net.Simple{
             if(this.size < this.pos) this.size = this.pos;
         }
         public GetShort():number{
-            var rst = BitConverter.ToInt32(this.buffer,this.pos);
+            var rst = BitConverter.ToInt16(this.buffer,this.pos);
             this.pos += 2;
             return rst;
         }

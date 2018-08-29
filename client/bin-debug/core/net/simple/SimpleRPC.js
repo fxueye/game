@@ -13,9 +13,7 @@ var Net;
                 this._recvSize = 0;
                 this._encryptKey = null;
                 this._sendBuffer = null;
-                this._eSendBuffer = null;
                 this._recvBuffer = null;
-                this._eRecvBuffer = null;
                 this._heartBeatSendTime = -1;
                 this._heartBeatRecvTime = -1;
                 this._heartBeatDelay = -1;
@@ -74,9 +72,7 @@ var Net;
                 this._socketConn = new Socket(this._name);
                 this._socketConn.RegHander(this);
                 this._sendBuffer = new Uint8Array(SimpleRPC.SEND_BUFF_SIZE);
-                this._eSendBuffer = new egret.ByteArray(this._sendBuffer);
-                this._recvBuffer = new Uint8Array(SimpleRPC.RECV_BUFF_SIZE);
-                this._eRecvBuffer = new egret.ByteArray(this._recvBuffer);
+                this._recvBuffer = new egret.ByteArray();
                 this._seqID = 0;
                 this._sendQueue = new Array();
                 this._recvQueue = new Array();
@@ -185,6 +181,8 @@ var Net;
                         var seqID = pack.GetShort();
                         var opcode = pack.GetShort();
                         if (seqID > 0 && this._lastRequest != null && this._lastRequest.SeqID == seqID) {
+                            var cmd = new Simple.Command(seqID, opcode, pack);
+                            this._lastRequest.Call(cmd);
                             this._lastRequest = null;
                         }
                         var cmd = new Simple.Command(seqID, opcode, pack);
@@ -214,12 +212,12 @@ var Net;
             };
             SimpleRPC.prototype.OnRecv = function () {
                 if (this.IsConnected) {
-                    this._socketConn.Receive(this._eRecvBuffer);
-                    this._recvSize += this._eRecvBuffer.buffer.byteLength;
-                    while (true) {
+                    this._socketConn.Receive(this._recvBuffer);
+                    this._recvSize += this._recvBuffer.bytes.byteLength;
+                    while (this._recvSize > 0) {
                         if (this._recvSize < 4)
                             break;
-                        var len = Simple.BitConverter.ToInt32(this._eRecvBuffer.buffer, 0);
+                        var len = Simple.BitConverter.ToInt32(this._recvBuffer.bytes, 0);
                         if (len > SimpleRPC.RECV_BUFF_SIZE || len < 0) {
                             throw new Error("too huge package on receive, len=" + len);
                         }
@@ -231,13 +229,13 @@ var Net;
                         }
                         else {
                             data = new Uint8Array(len);
-                            data.set(this._recvBuffer.subarray(4, len), 0);
+                            data.set(this._recvBuffer.bytes.subarray(4, len + 4), 0);
                         }
                         var pack = new Simple.Packet(data);
                         this._recvQueue.push(pack);
                         this._recvSize -= len + 4;
                         if (this._recvSize > 0)
-                            this._recvBuffer.set(this._recvBuffer.subarray(len + 4, this._recvSize), 0);
+                            this._recvBuffer.bytes.set(this._recvBuffer.bytes.subarray(len + 4, this._recvSize), 0);
                     }
                 }
             };
@@ -255,18 +253,13 @@ var Net;
                         var blen = Simple.BitConverter.GetBytes(len, 32);
                         this._sendBuffer.set(blen, this._sendSize);
                         // Packet.CopyBuffer(BitConverter.GetBytes(len,32),0,this._eSendBuffer.buffer,this._sendSize,4);
-                        var temp = new Uint8Array(this._eSendBuffer.buffer);
-                        var str = "";
-                        for (var i = 0; i < len + 4; i++) {
-                            str += "" + temp[i];
-                        }
-                        console.log("send bytes:" + str);
                         pack.Rewind();
                         pack.GetBytes(this._sendBuffer, this._sendSize + blen.byteLength, len);
                         this._sendSize += len + 4;
                     }
                     if (this._sendSize > 0) {
-                        var sendCount = this._socketConn.Send(this._eSendBuffer);
+                        var sendBuffer = new egret.ByteArray(this._sendBuffer);
+                        this._socketConn.Send(sendBuffer, this._sendSize);
                         this._sendSize = 0;
                     }
                 }
