@@ -79,7 +79,7 @@ namespace Net.Simple{
             for(let i = 0; i < b.length; ++i) dv.setUint8(pos++, b[i]);
         }
         public static ToString(b:Uint8Array,pos:number,length:number):string{
-            let bytes = b.subarray(pos, length);
+            let bytes = b.subarray(pos, pos + length);
             return BitConverter.decodeUTF8(bytes);
         }
         public static ToNumber(b:Uint8Array,pos:number,t:number = 32,f:boolean = false):number{

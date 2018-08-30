@@ -57,8 +57,8 @@ class ServerView extends BaseUIView {
 		}else if(evt.target.hashCode == this.btnSend.hashCode){
 
 			// App.Instance.RPC.SendPacket()
-			App.Instance.RPC.Send(0,"你好!");
-			console.log(new Long(123).toString());
+			App.Instance.RPC.Send(0);
+			
 			// var sock:egret.WebSocket = new egret.WebSocket();
 			// sock.type = egret.WebSocket.TYPE_BINARY;
 			// sock.addEventListener( egret.ProgressEvent.SOCKET_DATA, (evt:egret.Event)=>{

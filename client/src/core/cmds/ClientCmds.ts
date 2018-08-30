@@ -4,9 +4,14 @@ class ClientCmds implements IClientCmds{
 		this._rpc = rpc;
 	}
 
-
-	HeartBeat(cmd:Net.Simple.Command):void{
-		console.log("opcode:" + cmd.Opcode);
-		// this._rpc.Send(0);
+	HeartBeat(cmd:Net.Simple.Command, msg:string ){
+		console.log("opcode:" + cmd.Opcode +" msg:" + msg);
 	}
+	LoginSuccess(cmd:Net.Simple.Command, player:PlayerWrap , reconnect:boolean , extension:string ){
+
+	}
+	LoginFailed(cmd:Net.Simple.Command, errorCode:number , errMsg:string ){
+
+	}
+	
 }

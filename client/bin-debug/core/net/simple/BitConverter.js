@@ -82,7 +82,7 @@ var Net;
                     dv.setUint8(pos++, b[i]);
             };
             BitConverter.ToString = function (b, pos, length) {
-                var bytes = b.subarray(pos, length);
+                var bytes = b.subarray(pos, pos + length);
                 return BitConverter.decodeUTF8(bytes);
             };
             BitConverter.ToNumber = function (b, pos, t, f) {

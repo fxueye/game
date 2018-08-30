@@ -5,9 +5,12 @@ var ClientCmds = (function () {
     function ClientCmds(rpc) {
         this._rpc = rpc;
     }
-    ClientCmds.prototype.HeartBeat = function (cmd) {
-        console.log("opcode:" + cmd.Opcode);
-        // this._rpc.Send(0);
+    ClientCmds.prototype.HeartBeat = function (cmd, msg) {
+        console.log("opcode:" + cmd.Opcode + " msg:" + msg);
+    };
+    ClientCmds.prototype.LoginSuccess = function (cmd, player, reconnect, extension) {
+    };
+    ClientCmds.prototype.LoginFailed = function (cmd, errorCode, errMsg) {
     };
     return ClientCmds;
 }());

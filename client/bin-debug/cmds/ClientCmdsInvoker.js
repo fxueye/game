@@ -15,8 +15,14 @@ var ClientCmdsInvoker = (function () {
     ClientCmdsInvoker.prototype.Invoke = function (cmd) {
         var pack = cmd.Pack;
         switch (cmd.Opcode) {
-            case ClientCmdsCodes.HEART_BEAT:
-                this._cmds.HeartBeat(cmd);
+            case 0:
+                this._cmds.HeartBeat(cmd, pack.GetString());
+                break;
+            case 1:
+                this._cmds.LoginSuccess(cmd, new PlayerWrap().Decode(pack), pack.GetBool(), pack.GetString());
+                break;
+            case 2:
+                this._cmds.LoginFailed(cmd, pack.GetShort(), pack.GetString());
                 break;
         }
         if (this._onCmdInvoked != null && this._obj != null) {
