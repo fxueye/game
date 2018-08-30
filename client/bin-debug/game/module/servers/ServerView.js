@@ -55,7 +55,12 @@ var ServerView = (function (_super) {
         }
         else if (evt.target.hashCode == this.btnSend.hashCode) {
             // App.Instance.RPC.SendPacket()
-            App.Instance.RPC.Send(0);
+            for (var i = 0; i < 1000; i++) {
+                var player = new PlayerWrap();
+                player.GUID = "100001";
+                player.CreateTime = App.Instance.SrvDate.ServerTime;
+                App.Instance.RPC.SendPacket(ServerGWCmdsPacketGenerate.HeartBeatPacket(0, player));
+            }
             // var a = Net.Simple.BitConverter.GetBytes(Long.fromString("123"));
             // var b = Net.Simple.BitConverter.ToLong(a,0);
             // console.log(b);

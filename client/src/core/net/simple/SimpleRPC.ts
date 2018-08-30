@@ -138,7 +138,7 @@ namespace Net.Simple{
             this._sendQueue.push(pack);
         }
 
-        private increaseSeqID():number
+        public increaseSeqID():number
         {
             if(this._seqID >= 32767){
                 this._seqID = 0;
@@ -156,7 +156,7 @@ namespace Net.Simple{
         private CheckHeartBeat(){
             //websocket 有自己的心跳检查
 
-        }
+        } 
         private ProcessMsg(){
             while(this._recvQueue.length > 0){
                 var pack = this._recvQueue.pop();

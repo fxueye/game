@@ -14,23 +14,23 @@ var SrvDate = (function () {
                 var date = new Date();
                 this._server_timestamp = Math.floor(date.getTime() / 1000);
             }
-            return this._server_timestamp;
+            return Long.fromNumber(this._server_timestamp);
         },
         set: function (val) {
-            this._server_timestamp = val;
+            this._server_timestamp = val.toNumber();
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(SrvDate.prototype, "ServetDate", {
         get: function () {
-            return new Date(this.ServerTime * 1000);
+            return new Date(this.ServerTime.toNumber() * 1000);
         },
         enumerable: true,
         configurable: true
     });
     SrvDate.prototype.update = function () {
-        this.ServerTime += 1;
+        this.ServerTime.add(Long.fromInt(1));
         // Logger.log("server time: " + DateUtil.LongTimeFormat(this.ServetDate));
     };
     SrvDate.Millisecond = 1;
