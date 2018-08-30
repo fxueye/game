@@ -9,7 +9,10 @@ var Net;
             function BitConverter() {
             }
             BitConverter.GetBytes = function (a, b, c) {
-                if ((typeof a === "number") && (typeof b === "number")) {
+                if (Long.isLong(a)) {
+                    return BitConverter.Long2Bytes(a, BitConverter.littleEndian);
+                }
+                else if ((typeof a === "number") && (typeof b === "number")) {
                     if (c) {
                         var ba = new ArrayBuffer(b / 8);
                         var dv = new DataView(ba);
@@ -33,9 +36,6 @@ var Net;
                         else if (b == 32) {
                             dv.setUint32(0, a, BitConverter.littleEndian);
                         }
-                        else if (b == 64) {
-                            BitConverter.setInt64(a, dv, 0);
-                        }
                         return new Uint8Array(ba);
                     }
                 }
@@ -50,36 +50,15 @@ var Net;
                     return ub;
                 }
             };
-            BitConverter.getInt64 = function (v, pos) {
-                var offset = pos;
-                var b = [];
-                var ret = 0;
-                for (var i = 0; i < 8; ++i)
-                    b[i] = v.getUint8(offset++);
-                var s = b[0] & 0x80;
-                var d = 1;
-                for (var i = 0; i < 8; ++i) {
-                    var v_1 = b[7 - i];
-                    ret += (s ? (v_1 ^ 0xff) : v_1) * d;
-                    d *= 256;
+            BitConverter.Long2Bytes = function (val, littleEndian) {
+                if (littleEndian === void 0) { littleEndian = false; }
+                var n = val.toBytes(littleEndian);
+                var len = n.length;
+                var b = new Uint8Array(8);
+                for (var i = 0; i < len; i++) {
+                    b[i] = n[i];
                 }
-                return s ? -1 - ret : ret;
-            };
-            /**
-             * -2^53 < v < 2^53
-             */
-            BitConverter.setInt64 = function (v, dv, pos) {
-                var b = [];
-                var s = v < 0;
-                if (s)
-                    v = -1 - v;
-                for (var i = 0; i < 8; ++i) {
-                    var m = v % 256;
-                    v = (v - m) / 256;
-                    b[7 - i] = s ? (m ^ 0xff) : m;
-                }
-                for (var i = 0; i < b.length; ++i)
-                    dv.setUint8(pos++, b[i]);
+                return b;
             };
             BitConverter.ToString = function (b, pos, length) {
                 var bytes = b.subarray(pos, pos + length);
@@ -108,9 +87,6 @@ var Net;
                     else if (t == 32) {
                         val = v.getUint32(pos, BitConverter.littleEndian);
                     }
-                    else if (t == 64) {
-                        val = BitConverter.getInt64(v, pos);
-                    }
                 }
                 return val;
             };
@@ -130,7 +106,15 @@ var Net;
                 return BitConverter.ToNumber(b, pos, 32, false);
             };
             BitConverter.ToInt64 = function (b, pos) {
-                return BitConverter.ToNumber(b, pos, 64, false);
+                return BitConverter.ToLong(b, pos);
+            };
+            BitConverter.ToLong = function (b, pos) {
+                var bytes = b.subarray(pos, pos + 8);
+                var n = [];
+                for (var i = 0, len = bytes.length; i < len; i++) {
+                    n[i] = bytes[i];
+                }
+                return Long.fromBytes(n, true, BitConverter.littleEndian);
             };
             BitConverter.ToBoolean = function (b, pos) {
                 var v = new DataView(b.buffer);

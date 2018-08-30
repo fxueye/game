@@ -9,6 +9,8 @@ var ClientCmds = (function () {
         console.log("opcode:" + cmd.Opcode + " msg:" + msg);
     };
     ClientCmds.prototype.LoginSuccess = function (cmd, player, reconnect, extension) {
+        console.log("player:" + player.GUID);
+        console.log("CreateTime:" + player.CreateTime.toString());
     };
     ClientCmds.prototype.LoginFailed = function (cmd, errorCode, errMsg) {
     };

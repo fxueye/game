@@ -58,6 +58,11 @@ class ServerView extends BaseUIView {
 
 			// App.Instance.RPC.SendPacket()
 			App.Instance.RPC.Send(0);
+			// var a = Net.Simple.BitConverter.GetBytes(Long.fromString("123"));
+			// var b = Net.Simple.BitConverter.ToLong(a,0);
+			// console.log(b);
+
+			// console.log("long:" + Long.fromString("10000000000").toBytes(true).length);
 			
 			// var sock:egret.WebSocket = new egret.WebSocket();
 			// sock.type = egret.WebSocket.TYPE_BINARY;

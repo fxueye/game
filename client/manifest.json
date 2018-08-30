@@ -15,7 +15,6 @@
 	],
 	"game": [
 		"bin-debug/core/base/BaseSprite.js",
-		"bin-debug/core/base/BaseScene.js",
 		"bin-debug/core/mvc/BaseController.js",
 		"bin-debug/core/mvc/BaseProxy.js",
 		"bin-debug/core/mvc/BaseView.js",
@@ -23,6 +22,7 @@
 		"bin-debug/core/sound/BaseSound.js",
 		"bin-debug/core/utils/Dictionary.js",
 		"bin-debug/game/module/components/Icon.js",
+		"bin-debug/core/base/BaseScene.js",
 		"bin-debug/game/conf/GameConfig.js",
 		"bin-debug/core/adapter/ThemeAdapter.js",
 		"bin-debug/core/base/BaseLayer.js",
@@ -81,7 +81,7 @@
 		"bin-debug/game/conf/CompanyConfig.js",
 		"bin-debug/game/conf/CompetitionConfig.js",
 		"bin-debug/game/conf/ConfLoader.js",
-		"bin-debug/cmds/ClientCmdsCodes.js",
+		"bin-debug/game/utils/WeixinUtils.js",
 		"bin-debug/game/conf/HelpConfig.js",
 		"bin-debug/game/conf/IntervalConfig.js",
 		"bin-debug/game/conf/ItemConfig.js",
@@ -147,6 +147,6 @@
 		"bin-debug/game/utils/MoveClipUtils.js",
 		"bin-debug/game/utils/ParticleUtils.js",
 		"bin-debug/game/utils/ToastUtils.js",
-		"bin-debug/game/utils/WeixinUtils.js"
+		"bin-debug/cmds/ClientCmdsCodes.js"
 	]
 }

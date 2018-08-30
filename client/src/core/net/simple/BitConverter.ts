@@ -3,13 +3,16 @@ namespace Net.Simple{
         private static littleEndian = true;
         public constructor(){
         }
+        public static GetBytes(val:Long):Uint8Array;
         public static GetBytes(val:string):Uint8Array;
         public static GetBytes(val:boolean):Uint8Array;
         public static GetBytes(val:number,t:number):Uint8Array;
         public static GetBytes(val:number,t:number,f:boolean):Uint8Array;
 
         public static GetBytes(a:any,b?:any,c?:any):Uint8Array{
-            if((typeof a === "number") && (typeof b === "number")){
+            if(Long.isLong(a)){
+                return BitConverter.Long2Bytes(a,BitConverter.littleEndian);
+            }else if((typeof a === "number") && (typeof b === "number")){
                 if(c){
                     var ba = new ArrayBuffer(b / 8);
                     var dv = new DataView(ba);
@@ -28,8 +31,6 @@ namespace Net.Simple{
                         dv.setUint16(0,a,BitConverter.littleEndian);
                     }else if(b == 32){
                         dv.setUint32(0,a,BitConverter.littleEndian);
-                    }else if(b == 64){
-                        BitConverter.setInt64(a,dv,0);
                     }
                     return new Uint8Array(ba);
                 }
@@ -45,39 +46,16 @@ namespace Net.Simple{
         }
 
         
-        public static getInt64(v:DataView,pos:number):number {
-            let offset = pos;
-            let b:number[] = [];
-            let ret:number = 0;
-
-            for(let i = 0; i < 8; ++i) b[i] = v.getUint8(offset++);
-
-            let s = b[0] & 0x80;
-            let d = 1;
-            for(let i = 0; i < 8; ++i)
-            {
-                let v = b[7 - i];
-                ret += (s ? (v ^ 0xff) : v) * d;
-                d *= 256;
+        public static Long2Bytes(val:Long,littleEndian:boolean = false):Uint8Array {
+            var n = val.toBytes(littleEndian);
+            var len = n.length
+            var b = new Uint8Array(8);
+            for(var i = 0; i< len ; i++){
+                b[i] = n[i];
             }
-            return s ? -1 - ret : ret;
+            return b;
         }
-        
-        /**
-         * -2^53 < v < 2^53
-         */
-        public static setInt64(v:number,dv:DataView,pos:number):void {
-            let b:number[] = [];
-            let s = v < 0;
-            if(s) v = -1 - v;
-            for (let i = 0; i < 8; ++i)
-            {
-                let m = v % 256;
-                v = (v - m) / 256;
-                b[7 - i] = s ? (m ^ 0xff) : m;
-            }
-            for(let i = 0; i < b.length; ++i) dv.setUint8(pos++, b[i]);
-        }
+
         public static ToString(b:Uint8Array,pos:number,length:number):string{
             let bytes = b.subarray(pos, pos + length);
             return BitConverter.decodeUTF8(bytes);
@@ -98,8 +76,6 @@ namespace Net.Simple{
                     val = v.getUint16(pos,BitConverter.littleEndian);
                 }else if(t == 32){
                     val = v.getUint32(pos,BitConverter.littleEndian);
-                }else if(t == 64){
-                    val = BitConverter.getInt64(v,pos);
                 }
             }
             return val;
@@ -119,8 +95,16 @@ namespace Net.Simple{
         public static ToInt32(b:Uint8Array,pos:number):number{
             return BitConverter.ToNumber(b,pos,32,false);
         }
-        public static ToInt64(b:Uint8Array,pos:number):number{
-            return BitConverter.ToNumber(b,pos,64,false);
+        public static ToInt64(b:Uint8Array,pos:number):Long{
+            return BitConverter.ToLong(b,pos);
+        }
+        public static ToLong(b:Uint8Array,pos:number):Long{
+            var bytes = b.subarray(pos,pos + 8);
+            var n = [];
+            for(var i = 0, len = bytes.length ; i < len; i++){
+                n[i] = bytes[i];
+            }
+            return Long.fromBytes(n,true,BitConverter.littleEndian);
         }
         public static ToBoolean(b:Uint8Array,pos:number):boolean{
             var v = new DataView(b.buffer);

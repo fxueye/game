@@ -112,14 +112,14 @@ namespace Net.Simple{
             this.pos += 4;
             return rst;
         }
-        public PutLong(val:number){
+        public PutLong(val:Long){
             this.EnsureCapacity(8);
-            var src = BitConverter.GetBytes(val,64);
+            var src = BitConverter.GetBytes(val);
             this.buffer.set(src,this.pos);
             this.pos += src.byteLength;
             if(this.size < this.pos) this.size = this.pos;
         }
-        public GetLong():number{
+        public GetLong():Long{
             var rst = BitConverter.ToInt64(this.buffer,this.pos);
             this.pos += 8;
             return rst;

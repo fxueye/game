@@ -8,7 +8,8 @@ class ClientCmds implements IClientCmds{
 		console.log("opcode:" + cmd.Opcode +" msg:" + msg);
 	}
 	LoginSuccess(cmd:Net.Simple.Command, player:PlayerWrap , reconnect:boolean , extension:string ){
-
+		console.log("player:" + player.GUID);
+		console.log("CreateTime:" +player.CreateTime.toString());
 	}
 	LoginFailed(cmd:Net.Simple.Command, errorCode:number , errMsg:string ){
 

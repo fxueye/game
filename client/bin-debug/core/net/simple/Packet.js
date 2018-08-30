@@ -139,7 +139,7 @@ var Net;
             };
             Packet.prototype.PutLong = function (val) {
                 this.EnsureCapacity(8);
-                var src = Simple.BitConverter.GetBytes(val, 64);
+                var src = Simple.BitConverter.GetBytes(val);
                 this.buffer.set(src, this.pos);
                 this.pos += src.byteLength;
                 if (this.size < this.pos)
