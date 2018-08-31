@@ -1,0 +1,75 @@
+{
+	"groups": [
+		{
+			"keys": "anjian_mp3,bet_bottom_mp3,bg_mp3,building_bg_mp3,car_bg_mp3,home_bg_mp3,house_bg_mp3,price_bottom_mp3,price_bottom1_mp3,ship_bg_mp3,stock_data_mp3,young_bg_mp3,zhuangban_bg_mp3",
+			"name": "repload_sound"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/sound/anjian.mp3",
+			"type": "sound",
+			"name": "anjian_mp3"
+		},
+		{
+			"url": "assets/sound/bet_bottom.mp3",
+			"type": "sound",
+			"name": "bet_bottom_mp3"
+		},
+		{
+			"url": "assets/sound/bg.mp3",
+			"type": "sound",
+			"name": "bg_mp3"
+		},
+		{
+			"url": "assets/sound/building_bg.mp3",
+			"type": "sound",
+			"name": "building_bg_mp3"
+		},
+		{
+			"url": "assets/sound/car_bg.mp3",
+			"type": "sound",
+			"name": "car_bg_mp3"
+		},
+		{
+			"url": "assets/sound/home_bg.mp3",
+			"type": "sound",
+			"name": "home_bg_mp3"
+		},
+		{
+			"url": "assets/sound/house_bg.mp3",
+			"type": "sound",
+			"name": "house_bg_mp3"
+		},
+		{
+			"url": "assets/sound/price_bottom.mp3",
+			"type": "sound",
+			"name": "price_bottom_mp3"
+		},
+		{
+			"url": "assets/sound/price_bottom1.mp3",
+			"type": "sound",
+			"name": "price_bottom1_mp3"
+		},
+		{
+			"url": "assets/sound/ship_bg.mp3",
+			"type": "sound",
+			"name": "ship_bg_mp3"
+		},
+		{
+			"url": "assets/sound/stock_data.mp3",
+			"type": "sound",
+			"name": "stock_data_mp3"
+		},
+		{
+			"url": "assets/sound/young_bg.mp3",
+			"type": "sound",
+			"name": "young_bg_mp3"
+		},
+		{
+			"url": "assets/sound/zhuangban_bg.mp3",
+			"type": "sound",
+			"name": "zhuangban_bg_mp3"
+		}
+	]
+}

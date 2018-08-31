@@ -1,0 +1,5 @@
+{
+	"name": "jsencrypt",
+	"typings" : "typings/jsencrypt.d.ts",
+	"compilerVersion": "5.2.0"
+}

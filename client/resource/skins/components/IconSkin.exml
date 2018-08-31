@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skin.IconSkin" width="100" height="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="imgBg" width="100" height="100" source="{data.BgIcon}" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
+	<e:Image id="imgIcon" width="90" height="90" verticalCenter="0" horizontalCenter="0" source=""/>
+	<e:Image id="imgRank" width="69" height="57" anchorOffsetX="0" anchorOffsetY="0" source="{data.RankIcon}" left="-5" top="-13" scaleX="1" scaleY="1" visible="false"/>
+	<e:Label id="lbRank" text="{data.Rank}" anchorOffsetX="0" width="46" size="25" anchorOffsetY="0" height="32" x="-7" y="1" verticalAlign="middle" textAlign="center" fontFamily="SimHei" visible="false"/>
+	<e:Label id="labCount" text="0" bottom="10" right="10" size="18" fontFamily="SimHei" visible="false"/>
+	<e:Label id="labName" text="道具名字7个字" y="107" size="18" fontFamily="SimHei" horizontalCenter="0" visible="false"/>
+</e:Skin>

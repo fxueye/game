@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skin.HelpSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+<e:Image id="imgMask" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" anchorOffsetX="0" anchorOffsetY="0" rotation="90" source="common_bg_hd2_png" scale9Grid="10,9,12,11"/>
+	<e:Group id="gpCenter" width="760" height="500" verticalCenter="0" horizontalCenter="0" scaleX="1" scaleY="1">
+		<e:Image width="760" height="500" horizontalCenter="0" verticalCenter="0" source="common_bg_ty1_png" scale9Grid="8,31,11,64"/>
+		<e:Group width="760" height="54" top="0" horizontalCenter="0">
+			<e:Image width="100%" height="100%" horizontalCenter="0" verticalCenter="0" source="common_bg_ty3_png" fillMode="scale" scale9Grid="3,0,3,54"/>
+			<e:Image width="760" height="54" horizontalCenter="0" verticalCenter="0" source="common_bg_ty2_png"/>
+			<e:Label text="说明" horizontalCenter="0" verticalCenter="0" fontFamily="SimHei" size="28" bold="true" italic="true"/>
+		</e:Group>
+		<e:Group width="760" height="446" horizontalCenter="0" bottom="0">
+			<e:Image width="100%" height="100%" horizontalCenter="0" verticalCenter="0" source="common_bg_pxd_png" scale9Grid="3,3,18,18"/>
+			<e:Image source="common_bg_hd1_png" scale9Grid="10,10,10,8" left="10" right="10" top="10" bottom="10"/>
+			<e:Scroller left="20" right="20" top="20" visible="true" height="400">
+				<e:Group>
+					<e:Label id="labHelp" text="说明" size="20" fontFamily="SimHei" textColor="0xe9f6f6" width="100%" horizontalCenter="0" top="0" lineSpacing="20"/>
+				</e:Group>
+				<e:Skin>
+					<e:VScrollBar id="verticalScrollBar" autoVisibility="false" visible="false" width="7" height="100%" right="-30" skinName="skin.VScrollBarSkin"/>
+				</e:Skin>
+			</e:Scroller>
+			
+		</e:Group>
+	</e:Group>
+</e:Skin>

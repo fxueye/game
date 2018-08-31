@@ -1,0 +1,212 @@
+{
+	"groups": [
+		{
+			"keys": "common_json",
+			"name": "common"
+		},
+		{
+			"keys": "",
+			"name": "setting"
+		},
+		{
+			"keys": "icon_json",
+			"name": "icon"
+		},
+		{
+			"keys": "bg_jpg,egret_icon_png,button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,thumb_pb_png,track_pb_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,thumb_png,track_png,tracklight_png,roundthumb_png,track_sb_png,handle_png,off_png,on_png",
+			"name": "preload"
+		},
+		{
+			"keys": "bg_zhanshi_di_jpg,club_bg_jpg,common_bg_zhezhao_jpg,kaishitouzi_bg_2_jpg",
+			"name": "bg"
+		},
+		{
+			"keys": "load_png,loading_bg_jpg,loading_bg_jdt1_png,loading_bg_jdt2_png,loading_bg_jdt3_png",
+			"name": "loading"
+		}
+	],
+	"resources": [
+		{
+			"url": "eui_assets/bg.jpg",
+			"type": "image",
+			"name": "bg_jpg"
+		},
+		{
+			"url": "eui_assets/egret_icon.png",
+			"type": "image",
+			"name": "egret_icon_png"
+		},
+		{
+			"url": "eui_assets/Button/button_down.png",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "eui_assets/Button/button_up.png",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "eui_assets/CheckBox/checkbox_select_disabled.png",
+			"type": "image",
+			"name": "checkbox_select_disabled_png"
+		},
+		{
+			"url": "eui_assets/CheckBox/checkbox_select_down.png",
+			"type": "image",
+			"name": "checkbox_select_down_png"
+		},
+		{
+			"url": "eui_assets/CheckBox/checkbox_select_up.png",
+			"type": "image",
+			"name": "checkbox_select_up_png"
+		},
+		{
+			"url": "eui_assets/CheckBox/checkbox_unselect.png",
+			"type": "image",
+			"name": "checkbox_unselect_png"
+		},
+		{
+			"url": "eui_assets/ItemRenderer/selected.png",
+			"type": "image",
+			"name": "selected_png"
+		},
+		{
+			"url": "eui_assets/ProgressBar/thumb_pb.png",
+			"type": "image",
+			"name": "thumb_pb_png"
+		},
+		{
+			"url": "eui_assets/ProgressBar/track_pb.png",
+			"type": "image",
+			"name": "track_pb_png"
+		},
+		{
+			"url": "eui_assets/Panel/border.png",
+			"type": "image",
+			"name": "border_png"
+		},
+		{
+			"url": "eui_assets/Panel/header.png",
+			"type": "image",
+			"name": "header_png"
+		},
+		{
+			"url": "eui_assets/RadioButton/radiobutton_select_disabled.png",
+			"type": "image",
+			"name": "radiobutton_select_disabled_png"
+		},
+		{
+			"url": "eui_assets/RadioButton/radiobutton_select_down.png",
+			"type": "image",
+			"name": "radiobutton_select_down_png"
+		},
+		{
+			"url": "eui_assets/RadioButton/radiobutton_select_up.png",
+			"type": "image",
+			"name": "radiobutton_select_up_png"
+		},
+		{
+			"url": "eui_assets/RadioButton/radiobutton_unselect.png",
+			"type": "image",
+			"name": "radiobutton_unselect_png"
+		},
+		{
+			"url": "eui_assets/Slider/thumb.png",
+			"type": "image",
+			"name": "thumb_png"
+		},
+		{
+			"url": "eui_assets/Slider/track.png",
+			"type": "image",
+			"name": "track_png"
+		},
+		{
+			"url": "eui_assets/Slider/tracklight.png",
+			"type": "image",
+			"name": "tracklight_png"
+		},
+		{
+			"url": "eui_assets/ScrollBar/roundthumb.png",
+			"type": "image",
+			"name": "roundthumb_png"
+		},
+		{
+			"url": "eui_assets/ScrollBar/track_sb.png",
+			"type": "image",
+			"name": "track_sb_png"
+		},
+		{
+			"url": "eui_assets/ToggleSwitch/handle.png",
+			"type": "image",
+			"name": "handle_png"
+		},
+		{
+			"url": "eui_assets/ToggleSwitch/off.png",
+			"type": "image",
+			"name": "off_png"
+		},
+		{
+			"url": "eui_assets/ToggleSwitch/on.png",
+			"type": "image",
+			"name": "on_png"
+		},
+		{
+			"url": "assets/icon/icon.json",
+			"type": "sheet",
+			"name": "icon_json",
+			"subkeys": "icon_bag_0001_png,icon_bag_0002_png,icon_c_bugatti_png,icon_c_dazhong_png,icon_c_koenigsegg_png,icon_car_0001_png,icon_car_0002_png,icon_car_0003_png,icon_cloth_0001_png,icon_cloth_0002_png,icon_cloth_0003_png,icon_cloth_0004_png,icon_cloth_0005_png,icon_diamond02_png,icon_diamond03_png,icon_diamond10_png,icon_dress_0001_png,icon_dress_0002_png,icon_dress_0003_png,icon_dress_0004_png,icon_dress_0005_png,icon_ear_0001_png,icon_ear_0002_png,icon_h_loremipsum_png,icon_h_realestate_png,icon_hair_0001_png,icon_hair_0002_png,icon_hair_0003_png,icon_hair_0004_png,icon_hair_0005_png,icon_hand_0001_png,icon_hand_0002_png,icon_hand_0003_png,icon_hand_0004_png,icon_head_0001_png,icon_head_0002_png,icon_head_0003_png,icon_head_0004_png,icon_head_0005_png,icon_head_0006_png,icon_house_0001_png,icon_house_0002_png,icon_house_0003_png,icon_money01_png,icon_money02_png,icon_money03_png,icon_money04_png,icon_money05_png,icon_pant_0001_png,icon_pant_0002_png,icon_pant_0003_png,icon_pant_0004_png,icon_pant_0005_png,icon_s_ferretti_png,icon_s_heysea_png,icon_s_sessa_png,icon_ship_0001_png,icon_ship_0002_png,icon_ship_0003_png,icon_shoe_0001_png,icon_shoe_0002_png,icon_shoe_0003_png,icon_shoe_0004_png,icon_shoe_0005_png,icon_shoe_0006_png,icon_shoe_0007_png,icon_sock_0001_png,icon_sock_0002_png,icon_sock_0003_png"
+		},
+		{
+			"url": "assets/common/common.json",
+			"type": "sheet",
+			"name": "common_json",
+			"subkeys": "common_bg_biaotidi_png,common_bg_fg2_png,common_bg_fg_png,common_bg_fgbg_mignzidi2_png,common_bg_fgtext_bsjg_png,common_bg_hd1_png,common_bg_hd2_png,common_bg_jb_png,common_bg_jbk_png,common_bg_jdt_d_png,common_bg_jdt_png,common_bg_k1_png,common_bg_k2_png,common_bg_kuangtt_l_png,common_bg_kuangtt_png,common_bg_lbk_hui_png,common_bg_lbk_l_png,common_bg_lbk_png,common_bg_piao_png,common_bg_pxd_png,common_bg_sck1_png,common_bg_sck2_png,common_bg_sck3_png,common_bg_sk_png,common_bg_tck_png,common_bg_txd_png,common_bg_ty1_png,common_bg_ty2_png,common_bg_ty3_png,common_bg_weixindi_2_png,common_bg_weixindi_png,common_bg_wenhaoda_png,common_bg_wpk_l_png,common_bg_wpk_png,common_bg_xz_png,common_btn_+_png,common_btn_big_png,common_btn_gb_png,common_btn_gth_l_png,common_btn_gth_png,common_btn_hong_png,common_btn_huang_png,common_btn_jia_l_png,common_btn_jia_png,common_btn_jian_l_png,common_btn_jian_png,common_btn_jt2_png,common_btn_jt_png,common_btn_jt_shouqi_png,common_btn_jt_tangchu_png,common_btn_lv_png,common_btn_px_png,common_btn_shezhi_l_png,common_btn_shezhi_png,common_btn_xj_l_png,common_btn_xj_png,common_btn_yeqian2_png,common_btn_yeqian_png,common_btn_yeqian_xz2_png,common_btn_yeqian_xz3_png,common_btn_yeqian_xz_png,common_btn_yuang_png,common_btn_zcs_png,common_bu_st_png,common_icon_aixin_png,common_icon_bc_png,common_icon_bs_l_png,common_icon_bs_png,common_icon_exp_png,common_icon_fenxiang_png,common_icon_fx_l_png,common_icon_fx_png,common_icon_gszz_png,common_icon_hangqing_l_png,common_icon_hangqing_png,common_icon_hd_png,common_icon_jiaoyi_l_png,common_icon_jiaoyi_png,common_icon_kz_l_png,common_icon_kz_png,common_icon_lyq_l_png,common_icon_lyq_png,common_icon_mc_l_png,common_icon_mc_png,common_icon_nan_png,common_icon_nv_png,common_icon_p1_png,common_icon_p2_png,common_icon_p3_png,common_icon_phjp_png,common_icon_pm1_png,common_icon_pm2_png,common_icon_pm3_png,common_icon_pm_png,common_icon_q_png,common_icon_qd_png,common_icon_qk_png,common_icon_rw_png,common_icon_rwbj_png,common_icon_sc_png,common_icon_shaizi_png,common_icon_shengya_png,common_icon_sp_l_png,common_icon_sp_png,common_icon_sy_l_png,common_icon_sy_png,common_icon_tx2_png,common_icon_tx_png,common_icon_weng_png,common_icon_wt_l_png,common_icon_wt_png,common_icon_wz_l_png,common_icon_wz_png,common_icon_xz_l_png,common_icon_xz_png,common_icon_yjxf_png,common_icon_yt_l_png,common_icon_yt_png,common_icon_z_png,common_text_gxhd_png"
+		},
+		{
+			"url": "assets/bg/bg_zhanshi_di.jpg",
+			"type": "image",
+			"name": "bg_zhanshi_di_jpg"
+		},
+		{
+			"url": "assets/bg/club_bg.jpg",
+			"type": "image",
+			"name": "club_bg_jpg"
+		},
+		{
+			"url": "assets/bg/common_bg_zhezhao.jpg",
+			"type": "image",
+			"name": "common_bg_zhezhao_jpg"
+		},
+		{
+			"url": "assets/bg/kaishitouzi_bg_2.jpg",
+			"type": "image",
+			"name": "kaishitouzi_bg_2_jpg"
+		},
+		{
+			"url": "assets/loading/load.png",
+			"type": "image",
+			"name": "load_png"
+		},
+		{
+			"url": "assets/loading/loading_bg.jpg",
+			"type": "image",
+			"name": "loading_bg_jpg"
+		},
+		{
+			"url": "assets/loading/loading_bg_jdt1.png",
+			"type": "image",
+			"name": "loading_bg_jdt1_png"
+		},
+		{
+			"url": "assets/loading/loading_bg_jdt2.png",
+			"type": "image",
+			"name": "loading_bg_jdt2_png"
+		},
+		{
+			"url": "assets/loading/loading_bg_jdt3.png",
+			"type": "image",
+			"name": "loading_bg_jdt3_png"
+		}
+	]
+}

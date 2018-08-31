@@ -1,0 +1,12 @@
+{
+    "ServerVersion":"1.0.0",
+    "ServerPort":8000,
+    "WsPort":8001,
+    "CenterIp":"127.0.0.1",
+    "CenterPort":8888,
+    "PackLimit":200,
+    "RPCTimeOut":30,
+	"DesKey":"cAn!s&Ak",
+	"SendChanLimit":400,
+	"RecvChanLimit":400
+}

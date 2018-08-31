@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skin.DropDownListSkin" width="106" minHeight="141" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="gpList" width="106" height="141" y="0" horizontalCenter="0">
+		<e:Image width="100%" height="100%" source="common_bg_pxd_png"  scale9Grid="3,3,18,18"></e:Image>
+		<e:Scroller id="scroller" width="100%" height="100%" y="0" horizontalCenter="0">
+			<e:List id="ddlList" anchorOffsetX="0" width="100">
+					<e:itemRendererSkinName>
+						<e:Skin states="up,down,disabled" width="100" height="47">
+							<e:Image width="100%" height="100%"   horizontalCenter="0" verticalCenter="0" />
+							<e:Label id="labelDisplay" top="8" bottom="8" left="8" right="8"  size="18" fontFamily="SimHei" bold="true" textColor="0xFFFFFF" text="{data.Name}" verticalAlign="middle" textAlign="center"/>
+						</e:Skin>
+					</e:itemRendererSkinName>
+				<e:layout>
+					<e:VerticalLayout gap="0"/>
+				</e:layout>
+			</e:List>
+		</e:Scroller>
+	</e:Group>
+	<e:Button id="Btn" label="稀有度" x="0" enabled="true" top="0" height="47" width="106" anchorOffsetY="0">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="119" height="58" source="common_btn_px_png" source.down="common_btn_px_png" source.disabled="common_btn_px_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x35b0f8" fontFamily="SimHei" size="20" bold="true"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+</e:Skin>
