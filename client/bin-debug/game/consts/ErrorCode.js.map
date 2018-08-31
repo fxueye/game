@@ -1,1 +1,0 @@
-{"version":3,"file":"ErrorCode.js","sourceRoot":"","sources":["../../../src/game/consts/ErrorCode.ts"],"names":[],"mappings":";;;AAAA;IAAA;IAOA,CAAC;IANc,iBAAO,GAAG,CAAC,CAAC,CAAC;IACb,iBAAO,GAAG,CAAC,CAAC;IACZ,oBAAU,GAAG,KAAK,CAAC;IACnB,eAAK,GAAG;QACrB,UAAU,EAAC,SAAS,CAAC,UAAU;KAC/B,CAAA;IACF,gBAAC;CAAA,AAPD,IAOC;AAPK,UAAA,SAAS,wBAOd,CAAA"}

@@ -1,8 +1,0 @@
-[
-    {    "Id":1  , "Name":"股票交易所"  , "TextId":3070  , "NameLocation":[682,145]  , "Open":1  , "Image":"building_stock_png"  , "Location":[689,177]  , "GateId":7 } ,
-    {    "Id":2  , "Name":"期货交易所"  , "TextId":3071  , "NameLocation":[162,270]  , "Open":0  , "Image":"building_forward_png"  , "Location":[164,284]  , "GateId":7 } ,
-    {    "Id":3  , "Name":"外汇交易所"  , "TextId":3072  , "NameLocation":[462,205]  , "Open":0  , "Image":"building_wait_png"  , "Location":[497,231]  , "GateId":7 } ,
-    {    "Id":4  , "Name":"俱乐部"  , "TextId":3073  , "NameLocation":[1028,120]  , "Open":0  , "Image":"building_club_png"  , "Location":[1014,134]  , "GateId":7 } ,
-    {    "Id":5  , "Name":"世界舞台"  , "TextId":3074  , "NameLocation":[820,420]  , "Open":0  , "Image":"building_house_png"  , "Location":[762,382]  , "GateId":7 } 
-    
-]

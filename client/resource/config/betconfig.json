@@ -1,7 +1,0 @@
-[
-    {    "Id":1  , "GroupId":1  , "BetMoney":100 } ,
-    {    "Id":2  , "GroupId":1  , "BetMoney":500 } ,
-    {    "Id":3  , "GroupId":1  , "BetMoney":3000 } ,
-    {    "Id":4  , "GroupId":1  , "BetMoney":10000 } 
-    
-]

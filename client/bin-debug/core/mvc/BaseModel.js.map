@@ -1,1 +1,0 @@
-{"version":3,"file":"BaseModel.js","sourceRoot":"","sources":["../../../src/core/mvc/BaseModel.ts"],"names":[],"mappings":";;;AAAA;IAEI,mBAAmB,UAAyB;QACxC,IAAI,CAAC,WAAW,GAAG,UAAU,CAAC;QAC9B,IAAI,CAAC,WAAW,CAAC,QAAQ,CAAC,IAAI,CAAC,CAAC;IACpC,CAAC;IACL,gBAAC;AAAD,CAAC,AAND,IAMC;AANK,UAAA,SAAS,wBAMd,CAAA"}

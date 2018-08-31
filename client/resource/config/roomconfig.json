@@ -1,5 +1,0 @@
-[
-    {    "Id":1  , "TotalType":1  , "Name":"上证场"  , "CompetitionIds":[1,2,3,4]  , "StockName":"上证指数"  , "IsOpen":1 } ,
-    {    "Id":3  , "TotalType":2  , "Name":"虚拟场"  , "CompetitionIds":[1,2,3,4]  , "StockName":"虚拟股指"  , "IsOpen":0 } 
-    
-]

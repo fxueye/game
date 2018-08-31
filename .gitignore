@@ -1,0 +1,18 @@
+#egret 临时文件
+bin-debug/
+bin-release/
+.wing/
+android_proj
+android_as_proj
+client/manifest.json
+.idea
+temp/
+cdnres/
+client/libs/
+client_ios/
+cdnresrelease/
+client/bin-debug/
+client/bin-release/
+client/resource/config/*.json
+conf/output/
+client/debug.log

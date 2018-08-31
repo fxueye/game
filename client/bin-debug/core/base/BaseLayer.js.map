@@ -1,1 +1,0 @@
-{"version":3,"file":"BaseLayer.js","sourceRoot":"","sources":["../../../src/core/base/BaseLayer.ts"],"names":[],"mappings":";;;;;;;;;;AAAA;IAAwB,6BAAS;IAC7B;QAAA,YACI,iBAAO,SAIV;QAHG,KAAI,CAAC,YAAY,GAAG,GAAG,CAAC;QACxB,KAAI,CAAC,aAAa,GAAG,GAAG,CAAC;QACzB,KAAI,CAAC,YAAY,GAAG,KAAK,CAAC;;IAC9B,CAAC;IACL,gBAAC;AAAD,CAAC,AAPD,CAAwB,GAAG,CAAC,KAAK,GAOhC;AAPK,UAAA,SAAS,wBAOd,CAAA"}

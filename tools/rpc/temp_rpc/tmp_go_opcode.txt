@@ -1,7 +1,0 @@
-package cmds
-import ()
-
-const (
-	{{range $i, $data := $.Datas}}{{$.ClzName}}_{{$data.OpDef}} = {{$data.Opcode}} // {{index $data.Comment}}
-	{{end}}
-)
