@@ -1,0 +1,17 @@
+[
+    {    "Id":1  , "GateType":1  , "GateId":1   , "DataSeries":[1,2,4,3,5,9,6,7,8,10,11,12]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":2  , "GateType":1  , "GateId":2   , "DataSeries":[1,2,4,3,5,9,6,7,8,10,11,12]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":3  , "GateType":1  , "GateId":3   , "DataSeries":[1,2,4,3,5,9,6,7,8,10,11,12]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":4  , "GateType":1  , "GateId":4   , "DataSeries":[1,2,4,3,5,9,6,7,8,10,11,12]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":5  , "GateType":1  , "GateId":5   , "DataSeries":[1,2,4,3,5,9,6,7,8,10]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":6  , "GateType":1  , "GateId":6   , "DataSeries":[]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":7  , "GateType":1  , "GateId":7   , "DataSeries":[1,2,4,3,5,9,6,7,8,10,11,12]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":8  , "GateType":4  , "GateId":0   , "DataSeries":[]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":9  , "GateType":2  , "GateId":0   , "DataSeries":[1,2,4,3,13,15,7]  , "Special":"delete"  , "Textid":"3011"   , "Isbuy":"" } ,
+    {    "Id":10  , "GateType":2  , "GateId":0   , "DataSeries":[1,32,33,34]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":11  , "GateType":2  , "GateId":0   , "DataSeries":[1,32,33,34]  , "Special":""  , "Textid":""   , "Isbuy":"" } ,
+    {    "Id":12  , "GateType":2  , "GateId":0   , "DataSeries":[1,35,36,16,37,38,39]  , "Special":"cancel"  , "Textid":"3004"   , "Isbuy":"1" } ,
+    {    "Id":13  , "GateType":2  , "GateId":0   , "DataSeries":[1,2,34,33,7,8,32]  , "Special":"quote"  , "Textid":"3012"   , "Isbuy":"" } ,
+    {    "Id":14  , "GateType":3  , "GateId":0   , "DataSeries":[]  , "Special":""  , "Textid":""   , "Isbuy":"" } 
+    
+]

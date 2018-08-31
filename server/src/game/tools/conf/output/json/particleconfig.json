@@ -1,0 +1,8 @@
+[
+    {    "Id":1  , "Texture":"asset_leaf_png"  , "Config":"asset_leaf_json"  , "Location":[500,0]  , "Scale":[] } ,
+    {    "Id":2  , "Texture":"asset_car_png"  , "Config":"asset_car_json"  , "Location":[500,150]  , "Scale":[] } ,
+    {    "Id":3  , "Texture":"asset_sea_png"  , "Config":"asset_sea_json"  , "Location":[200,175]  , "Scale":[] } ,
+    {    "Id":4  , "Texture":"dress_shine_png"  , "Config":"dress_shine_json"  , "Location":[50,80]  , "Scale":[0.8,0.8] } ,
+    {    "Id":5  , "Texture":"stock_shine_png"  , "Config":"stock_shine_json"  , "Location":[]  , "Scale":[] } 
+    
+]

@@ -1,0 +1,10 @@
+[
+    {    "Id":1  , "Name":"第1天"  , "Icon":"common_icon_nan_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[1]  , "Nums":[5000] } ,
+    {    "Id":2  , "Name":"第2天"  , "Icon":"common_icon_nan_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[1]  , "Nums":[10000] } ,
+    {    "Id":3  , "Name":"第3天"  , "Icon":"common_icon_nan_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[1]  , "Nums":[50000] } ,
+    {    "Id":4  , "Name":"第4天"  , "Icon":"common_icon_nan_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[1]  , "Nums":[100000] } ,
+    {    "Id":5  , "Name":"第5天"  , "Icon":"common_icon_nan_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[1]  , "Nums":[150000] } ,
+    {    "Id":6  , "Name":"第6天"  , "Icon":"common_icon_nan_png"  , "Bg":"common_bg_wpk_png"  , "Reward":[1]  , "Nums":[300000] } ,
+    {    "Id":7  , "Name":"第7天"  , "Icon":"common_icon_nan_png"  , "Bg":"common_bg_wpk_l_png"  , "Reward":[2]  , "Nums":[100] } 
+    
+]

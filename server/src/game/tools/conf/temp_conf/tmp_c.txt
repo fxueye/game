@@ -1,0 +1,66 @@
+        #ifndef __SERVER_GAME_{{$.ClzName | toUpper}}_H
+#define __SERVER_GAME_{{$.ClzName | toUpper}}_H
+
+#include <iostream>
+#include <map>
+#include <vector>
+#include <string>
+#include "rapidjson/document.h"
+using namespace std;
+using rapidjson::Document;
+using rapidjson::Value;
+
+class {{$.ClzName}} {
+	public:
+		static map<int,{{$.ClzName}}>& Dic()
+        {
+            static map<int,{{$.ClzName}}> g_dic;
+            return g_dic;
+        }
+		static vector<{{$.ClzName}}>& Arr(){
+            static vector<{{$.ClzName}}> g_arr;
+            return g_arr;
+        }
+        static void parse(Document doc){
+			if(doc.IsArray()){
+				for(size_t i = 0; i < doc.Size(); i++){
+					Value & v = doc[i];
+					if(v.IsObject()){
+                       {{range $i, $n := $.ConfNames}}{{if not (index $.Hide $i) }} Value & {{$n | toLower}} = v["{{$n}}"];{{if index $.ConfIsArrays $i}}
+                        vector<{{index $.ConfTypes $i | getCType}}> t{{$n}};
+                        if({{$n | toLower}}.IsArray()){
+                            for(size_t j = 0; j < {{$n | toLower}}.Size();++j){
+                                Value & val = {{$n | toLower}}[j];
+                                t{{$n}}.push_back(val.Get{{(index $.ConfTypes $i | getCType) | ucFirst}}());
+                            }
+                        }{{end}}{{end}}
+                       {{end}}
+                        {{$.ClzName}} {{$.ClzName | toLower}};
+                        {{range $i, $n := $.ConfNames}}{{if not (index $.Hide $i) }}{{if index $.ConfIsArrays $i}}{{$.ClzName | toLower}}.set{{$n}}(t{{$n}});{{else}}{{$.ClzName | toLower}}.set{{$n}}({{$n | toLower}}.Get{{(index $.ConfTypes $i | getCType) | ucFirst}}()); {{end}}{{end}}
+                        {{end}}
+                        {{$.ClzName}}::Dic().insert(pair<int,{{$.ClzName}}>({{$.ClzName | toLower}}.getId(),{{$.ClzName | toLower}}));
+                        {{$.ClzName}}::Arr().push_back({{$.ClzName | toLower}});
+					}
+				}
+			}
+        }
+        {{range $i, $n := $.ConfNames}}{{if not (index $.Hide $i) }}{{if index $.ConfIsArrays $i}}vector<{{index $.ConfTypes $i | getCType}}> get{{$n}}(){
+            return {{$n}};
+        }
+        void set{{$n}}(vector<{{index $.ConfTypes $i | getCType}}> val){
+            {{$n}} = val;
+        }{{else}}{{index $.ConfTypes $i | getCType}} get{{$n}}(){
+            return {{$n}};
+        }
+        void set{{$n}}({{index $.ConfTypes $i | getCType}} val){
+            {{$n}} = val;
+        }
+        {{end}}{{end}}
+        {{end}}
+		
+    private:
+        {{range $i, $n := $.ConfNames}}{{if not (index $.Hide $i) }} {{if index $.ConfIsArrays $i}}vector<{{index $.ConfTypes $i | getCType}}>{{else}}{{index $.ConfTypes $i | getCType}}{{end}} {{$n}};{{end}}
+        {{end}}
+};
+
+#endif

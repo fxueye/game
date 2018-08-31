@@ -1,0 +1,4 @@
+[
+    {{range $row, $data := $.ConfDatas}}{ {{range $i, $name := $.ConfNames}} {{if not (index $.Hide $i)}} {{if gt $i 0}},{{end}} "{{$name}}":{{if index $.ConfIsArrays $i}}[{{end}}{{index $data $i}}{{if index $.ConfIsArrays $i}}]{{end}}{{end}}{{end}} }{{$len := len $.ConfDatas}} {{if lt $row (less $len 1)}},{{end}}
+    {{end}}
+]

@@ -1,0 +1,47 @@
+#ifndef __SERVER_GAME_CONFLOADER_H
+#define __SERVER_GAME_CONFLOADER_H
+#include <iostream>
+#include <string>
+#include "rapidjson/document.h"
+#include "rapidjson/stringbuffer.h"
+#include "rapidjson/writer.h"
+#include "utils/log.h"
+{{range $i,$n := $}}#include "{{$n}}.h"
+{{end}}
+
+using namespace std;
+using rapidjson::Document;
+
+class ConfLoader{
+	private:
+		Document readJsonFile(string path){
+			string stringFormStream;
+			ifstream in;
+			in.open(path,ifstream::in);
+			if(!in.is_open()){
+				cerr << "path:" << path << "not open." << endl;
+				return NULL;
+			}
+			string line;
+			while(getline(in,line)){
+				stringFormStream.append(line+ "\n");
+			}
+			in.close();
+//			using rapidjson::Document;
+			Document doc;
+			doc.Parse(stringFormStream.c_str());
+			if(doc.HasParseError()){
+				rapidjson::ParseErrorCode code = doc.GetParseError();
+				cout << "json parse error:" <<  code <<  endl;
+				return NULL;
+			}
+			return doc;
+			
+		}
+	public:
+		void load(string path){
+            {{range $i,$n := $}} {{$n}}::parse(readJsonFile(path + "/" + "{{toLower $n}}.json"));
+            {{end}}
+		}
+};
+#endif

@@ -2,6 +2,7 @@ package server
 
 import (
 	conf "game/common/config"
+	jsonconf "game/conf"
 	"game/common/server"
 	"runtime"
 
@@ -24,6 +25,7 @@ func Init() {
 	Instance = &GatewayServer{
 		server.NewServer(),
 	}
+	jsonconf.LoadConfigs()
 	conf.LoadConfig("json", "config/gateway_config.json", &config)
 	gwInstance = newGatewayService(config.ServerPort, config.PackLimit)
 	Instance.RegServ("gw", gwInstance)

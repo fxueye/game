@@ -1,0 +1,13 @@
+[
+    {    "Id":1  , "Name":"zhujiemian_bg_jpg"  , "Location":[0,0]  } ,
+    {    "Id":2  , "Name":"kaishitouzi_bg_gzjz_jpg"  , "Location":[0,0]  } ,
+    {    "Id":3  , "Name":"kaishitouzi_bg_2_jpg"  , "Location":[0,0]  } ,
+    {    "Id":4  , "Name":"zhuangban_bg_jpg"  , "Location":[0,0]  } ,
+    {    "Id":5  , "Name":"cheku_bg_jpg"  , "Location":[0,0]  } ,
+    {    "Id":6  , "Name":"chuanwu_bg_behind_jpg"  , "Location":[0,0]  } ,
+    {    "Id":7  , "Name":"chuanwu_bg_front_png"  , "Location":[0,325]  } ,
+    {    "Id":8  , "Name":"house_bg_behind_jpg"  , "Location":[0,0]  } ,
+    {    "Id":9  , "Name":"house_bg_front_png"  , "Location":[0,0]  } ,
+    {    "Id":10  , "Name":"bg_zhanshi_di_jpg"  , "Location":[0,0]  } 
+    
+]

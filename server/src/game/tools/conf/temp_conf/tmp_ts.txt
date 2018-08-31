@@ -1,0 +1,28 @@
+class {{$.ClzName}} {
+    private static _dic:Dictionary<{{$.ClzName}}> = new Dictionary<{{$.ClzName}}>();
+    private static _arr:Array<{{$.ClzName}}> = new Array<{{$.ClzName}}>();
+
+	{{range $i, $n := $.ConfNames}}{{if not (index $.Hide $i) }} public {{$n}} :{{if index $.ConfIsArrays $i}} Array<{{index $.ConfTypes $i | getTsType}}>{{else}}{{index $.ConfTypes $i | getTsType}}{{end}} {{if index $.ConfIsArrays $i}} =new Array<{{index $.ConfTypes $i | getTsType}}>(){{end}};{{end}}
+    {{end}}
+
+    
+    public constructor(){
+
+    }
+
+
+    public static get Dic():Dictionary<{{$.ClzName}}>{
+        return  {{$.ClzName}}._dic;
+    }
+    public static get Arr():Array<{{$.ClzName}}>{
+        return {{$.ClzName}}._arr;
+    }
+    public static parse(json:any[]){
+
+        for(var i = 0; i < json.length; i++){
+            let config:{{$.ClzName}} = <{{$.ClzName}}>json[i];
+            {{$.ClzName}}._arr.push(config);
+            {{$.ClzName}}._dic.add(config.Id,config);
+        }
+    }
+}

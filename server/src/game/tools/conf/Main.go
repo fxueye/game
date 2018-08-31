@@ -16,17 +16,20 @@ var (
 	inputPath       string
 	outputPath      string
 	tmpJsonPath     string
-	tmpCSPath       string
-	tmpCSLoaderPath string
-	tmpGoPath       string
+	tmpTSPath       string
+	tmpTSLoaderPath string
+	tmpCPath 		string
+	tmpCLoaderPath 	string
+	tmpGoPath 		string
 	tmpGoLoaderPath string
 	translatePath   string
 )
 
 func main() {
-	input_path := flag.String("I", "", "configure input path")
-	output_path := flag.String("O", "", "configure output path")
-	temp_path := flag.String("T", "", "configure template path")
+
+	input_path := flag.String("I", "./input", "configure input path")
+	output_path := flag.String("O", "./output", "configure output path")
+	temp_path := flag.String("T", "./temp_conf", "configure template path")
 	flag.Parse()
 
 	inputPath, _ = filepath.Abs(*input_path)
@@ -38,14 +41,20 @@ func main() {
 	tmpJsonPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_json.txt"))
 	fmt.Printf("temp_json_path=%s\n", tmpJsonPath)
 
-	tmpCSPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_cs.txt"))
-	fmt.Printf("temp_csharp_path=%s\n", tmpCSPath)
+	tmpTSPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_ts.txt"))
+	fmt.Printf("temp_ts_path=%s\n", tmpTSPath)
 
-	tmpCSLoaderPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_cs_loader.txt"))
-	fmt.Printf("temp_csharp_loader_path=%s\n", tmpCSLoaderPath)
+	tmpTSLoaderPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_ts_loader.txt"))
+	fmt.Printf("temp_ts_loader_path=%s\n", tmpTSLoaderPath)
+
+	tmpCPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_c.txt"))
+	fmt.Printf("temp_c_path=%s\n", tmpCPath)
+
+	tmpCLoaderPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_c_loader.txt"))
+	fmt.Printf("temp_c_loader_path=%s\n", tmpCLoaderPath)
 
 	tmpGoPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_go.txt"))
-	fmt.Printf("temp_json_path=%s\n", tmpJsonPath)
+	fmt.Printf("temp_go_path=%s\n", tmpGoPath)
 
 	tmpGoLoaderPath, _ = filepath.Abs(fmt.Sprintf("%s%c%s", *temp_path, os.PathSeparator, "tmp_go_loader.txt"))
 	fmt.Printf("temp_go_loader_path=%s\n", tmpGoLoaderPath)
@@ -54,34 +63,38 @@ func main() {
 	fmt.Printf("translate_text_path=%s\n", translatePath)
 
 	if !IsExist(inputPath) {
-		panic(fmt.Sprint("input path not exists: %s", inputPath))
+		panic(fmt.Sprintf("input path not exists: %s", inputPath))
 	}
 	if !IsExist(tmpJsonPath) {
-		panic(fmt.Sprint("json template path not exists: %s", tmpJsonPath))
+		panic(fmt.Sprintf("json template path not exists: %s", tmpJsonPath))
 	}
-	if !IsExist(tmpCSPath) {
-		panic(fmt.Sprint("csharp template path not exists: %s", tmpCSPath))
+	if !IsExist(tmpTSPath) {
+		panic(fmt.Sprintf("ts template path not exists: %s", tmpTSPath))
 	}
-	if !IsExist(tmpCSLoaderPath) {
-		panic(fmt.Sprint("csharp loader template path not exists: %s", tmpCSLoaderPath))
+	if !IsExist(tmpTSLoaderPath) {
+		panic(fmt.Sprintf("ts loader template path not exists: %s", tmpTSLoaderPath))
 	}
-	if !IsExist(tmpGoPath) {
-		panic(fmt.Sprint("go template path not exists: %s", tmpGoPath))
+	if !IsExist(tmpCPath) {
+		panic(fmt.Sprintf("c++ template path not exists: %s", tmpCPath))
 	}
-	if !IsExist(tmpGoLoaderPath) {
-		panic(fmt.Sprint("go loader template path not exists: %s", tmpGoLoaderPath))
+	if !IsExist(tmpCLoaderPath) {
+		panic(fmt.Sprintf("c++ loader template path not exists: %s", tmpCLoaderPath))
 	}
 	if outputPath == "" {
-		panic(fmt.Sprint("invalid output path: %s", outputPath))
+		panic(fmt.Sprintf("invalid output path: %s", outputPath))
 	}
 	if IsExist(outputPath) {
 		os.RemoveAll(outputPath)
 	}
 	jsonPath := fmt.Sprintf("%s%c%s", outputPath, os.PathSeparator, "json")
-	csPath := fmt.Sprintf("%s%c%s", outputPath, os.PathSeparator, "cs")
+	tsPath := fmt.Sprintf("%s%c%s", outputPath, os.PathSeparator, "ts")
+	cPath := fmt.Sprintf("%s%c%s", outputPath, os.PathSeparator, "cpp")
 	goPath := fmt.Sprintf("%s%c%s", outputPath, os.PathSeparator, "go")
+	
+
 	os.MkdirAll(jsonPath, 0755)
-	os.MkdirAll(csPath, 0755)
+	os.MkdirAll(tsPath, 0755)
+	os.MkdirAll(cPath, 0755)
 	os.MkdirAll(goPath, 0755)
 
 	confNames := make([]string, 0, 32)
@@ -107,15 +120,17 @@ func main() {
 		}
 
 		conf := ParseFile(fmt.Sprintf("%s%c%s", inputPath, os.PathSeparator, fi.Name()), clzName, textMap)
-		CreateFile(fmt.Sprintf("%s%c%s.txt", jsonPath, os.PathSeparator, clzName), tmpJsonPath, conf)
-		CreateFile(fmt.Sprintf("%s%c%s.cs", csPath, os.PathSeparator, clzName), tmpCSPath, conf)
+		CreateFile(fmt.Sprintf("%s%c%s.json", jsonPath, os.PathSeparator, strings.ToLower(clzName)), tmpJsonPath, conf)
+		CreateFile(fmt.Sprintf("%s%c%s.ts", tsPath, os.PathSeparator, clzName), tmpTSPath, conf)
+		CreateFile(fmt.Sprintf("%s%c%s.h", cPath, os.PathSeparator, clzName), tmpCPath, conf)
 		CreateFile(fmt.Sprintf("%s%c%s.go", goPath, os.PathSeparator, clzName), tmpGoPath, conf)
 
 		confNames = append(confNames, clzName)
 	}
 
+	CreateFile(fmt.Sprintf("%s%c%s.ts", tsPath, os.PathSeparator, "ConfLoader"), tmpTSLoaderPath, confNames)
+	CreateFile(fmt.Sprintf("%s%c%s.h", cPath, os.PathSeparator, "ConfLoader"), tmpCLoaderPath, confNames)
 	CreateFile(fmt.Sprintf("%s%c%s.go", goPath, os.PathSeparator, "ConfLoader"), tmpGoLoaderPath, confNames)
-	CreateFile(fmt.Sprintf("%s%c%s.cs", csPath, os.PathSeparator, "ConfLoader"), tmpCSLoaderPath, confNames)
 	fmt.Println("----------------------------------\n")
 
 	CreateTranslateFile(textMap, translatePath)
@@ -133,6 +148,7 @@ type ConfData struct {
 	ConfIsArrays  []bool
 	ConfDatas     [][]string
 	NeedTranslate []bool
+	Hide          []bool
 }
 
 func CreateTranslateFile(textMap map[string]bool, path string) {
@@ -160,8 +176,9 @@ func CreateFile(path string, tmpPath string, data interface{}) {
 			f.Close()
 		}
 	}()
-
-	t, err := template.ParseFiles(tmpPath)
+	name := filepath.Base(tmpPath)
+	t := template.New(name)
+	_, err := t.Funcs(registerFunc()).ParseFiles(tmpPath)
 	if err != nil {
 		panic(err)
 	}
@@ -185,6 +202,7 @@ func ParseFile(path string, clzName string, textMap map[string]bool) *ConfData {
 		make([]bool, 0, 32),
 		make([][]string, 0, 32),
 		make([]bool, 0, 32),
+		make([]bool, 0, 32),
 	}
 	for _, cell := range sheet.Rows[0].Cells {
 		v := cell.Value
@@ -193,8 +211,10 @@ func ParseFile(path string, clzName string, textMap map[string]bool) *ConfData {
 		}
 
 		data.NeedTranslate = append(data.NeedTranslate, v[0] == 'T')
+		data.Hide = append(data.Hide, v[0] == 'H')
 	}
 	for _, cell := range sheet.Rows[1].Cells {
+
 		v := cell.Value
 		if v == "" {
 			break
@@ -231,7 +251,7 @@ func ParseFile(path string, clzName string, textMap map[string]bool) *ConfData {
 		d := make([]string, length)
 		for i := 0; i < length; i++ {
 			if data.ConfIsArrays[i] {
-				if  i < len(row.Cells) && row.Cells[i].Value != "" {
+				if i < len(row.Cells) && row.Cells[i].Value != "" {
 					strs := strings.Split(row.Cells[i].Value, ",")
 					ss := make([]string, len(strs))
 					for j := 0; j < len(strs); j++ {
@@ -246,7 +266,7 @@ func ParseFile(path string, clzName string, textMap map[string]bool) *ConfData {
 				}
 			} else {
 				cellValue := ""
-				if (i < len(row.Cells)) {
+				if i < len(row.Cells) {
 					cellValue = row.Cells[i].Value
 				}
 				d[i] = GetValueText(cellValue, data.ConfTypes[i])
@@ -287,5 +307,63 @@ func GetValueText(v string, t string) string {
 		return v
 	default:
 		return v
+	}
+}
+func registerFunc() template.FuncMap {
+	funcs := template.FuncMap{}
+	funcs["getTsType"] = GetTsType
+	funcs["getCType"] = GetCType
+	funcs["add"] = Add
+	funcs["less"] = Less
+	funcs["toLower"] = ToLower
+	funcs["toUpper"] = ToUpper
+	funcs["ucFirst"] = UcFirst
+	return funcs
+}
+func UcFirst(s string) string{
+	return fmt.Sprint(strings.ToUpper(s[:1]), s[1:])
+}
+func Add(a, b int) int {
+	return a + b
+}
+func Less(a, b int) int {
+	return a - b
+}
+func ToLower(s string) string {
+	return strings.ToLower(s)
+}
+func ToUpper(s string) string {
+	return strings.ToUpper(s)
+}
+func GetTsType(t string) string {
+	switch t {
+	case "bool":
+		return "boolean"
+	case "long":
+		return "number"
+	case "int":
+		return "number"
+	case "float":
+		return "number"
+	case "string":
+		return "string"
+	default:
+		return t
+	}
+}
+func GetCType(t string) string {
+	switch t {
+	case "bool":
+		return "bool"
+	case "int":
+		return "int"
+	case "float":
+		return "float"
+	case "string":
+		return "string"
+	case "long":
+		return "int64"
+	default:
+		return t
 	}
 }

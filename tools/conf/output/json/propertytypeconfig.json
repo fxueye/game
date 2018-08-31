@@ -1,0 +1,6 @@
+[
+    {    "Id":1  , "Parent":0  , "Name":"别墅豪宅"  , "Bg":7  , "Icon":"common_icon_bs_png"  , "IconDown":"common_icon_bs_l_png" } ,
+    {    "Id":2  , "Parent":0  , "Name":"世界名车"  , "Bg":5  , "Icon":"common_icon_mc_png"  , "IconDown":"common_icon_mc_l_png" } ,
+    {    "Id":3  , "Parent":0  , "Name":"私人游艇"  , "Bg":6  , "Icon":"common_icon_yt_png"  , "IconDown":"common_icon_yt_l_png" } 
+    
+]

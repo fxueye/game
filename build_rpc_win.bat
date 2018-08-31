@@ -1,5 +1,5 @@
 RD /S /Q tools\rpc\output
-tools\rpc\rpc -I tools\rpc\input -O tools\rpc\output -T tools\rpc\temp_rpc
+tools\rpc\rpc -I rpc -O tools\rpc\output -T tools\rpc\temp_rpc
 
 RD /S /Q client\src\cmds
 MD client\src\cmds
