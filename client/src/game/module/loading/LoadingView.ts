@@ -34,7 +34,6 @@ class LoadingView extends BaseUIView {
 			
 			}
 		}
-		GameUtils.PageConfigBeforOpen(ModuleConst.LOADING,1);
 		App.Instance.EventMgr.addEventListener(RPC.SOCK_NETWORK_ERROR,this.onNetError,this);
 		super.open.apply(this,param);
 	}

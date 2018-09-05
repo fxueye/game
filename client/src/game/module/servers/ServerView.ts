@@ -105,7 +105,7 @@ class ServerView extends BaseUIView {
 		this._serverData.refresh();
     }
 	public open(...param:any[]):void{
-		GameUtils.PageConfigBeforOpen(ModuleConst.SERVERLIST,1);
+		// GameUtils.PageConfigBeforOpen(ModuleConst.SERVERLIST,1);
 		EffectUtils.OpenEffect(this.gpCenter,EffectType.Slight);
 		super.open.apply(this,param);
 	}

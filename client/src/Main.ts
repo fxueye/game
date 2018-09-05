@@ -73,7 +73,7 @@ class Main extends eui.UILayer {
         // const userInfo = await platform.getUserInfo();
         App.Instance.init();
 
-        App.Instance.SceneMgr.runScene(SceneConst.GAME);
+        App.Instance.SceneMgr.runScene(SceneConst.WORD);
       
         // const loginInfo = await platform.login();
         // Logger.log(loginInfo);
@@ -156,8 +156,9 @@ class Main extends eui.UILayer {
     }
     
     protected initScene(): void {
-        // App.Instance.SceneMgr.register(SceneConst.LOADING,new LoadingScene());
+        App.Instance.SceneMgr.register(SceneConst.LOADING,new LoadingScene());
         App.Instance.SceneMgr.register(SceneConst.GAME,new GameScene());
+        App.Instance.SceneMgr.register(SceneConst.WORD,new WordScene());
     }
     protected initModule():void{
         App.Instance.ControlMgr.register(ModuleConst.LOADING,new LoadingController());
