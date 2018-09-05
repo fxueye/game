@@ -16,6 +16,10 @@ type ItemConfigElem struct {
 	ItemType int
 	Icon string
 	Star int
+	AddType int
+	WorthPrice int
+	Iconframe string
+	IconScale float32
 	
 }
 

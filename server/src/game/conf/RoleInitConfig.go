@@ -15,7 +15,19 @@ type RoleInitConfigElem struct {
 	IconID int
 	Gold int
 	Diamond int
+	Body int
+	Job string
+	Name string
 	InitSuit int
+	Cloth []int
+	Mood int
+	Title int
+	Exp int
+	Mail int
+	House int
+	Car int
+	Ship int
+	ItemIds []int
 	
 }
 

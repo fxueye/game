@@ -31,6 +31,10 @@ class ItemConfig {
                         Value & itemtype = v["ItemType"];
                         Value & icon = v["Icon"];
                         Value & star = v["Star"];
+                        Value & addtype = v["AddType"];
+                        Value & worthprice = v["WorthPrice"];
+                        Value & iconframe = v["Iconframe"];
+                        Value & iconscale = v["IconScale"];
                        
                         ItemConfig itemconfig;
                         itemconfig.setId(id.GetInt()); 
@@ -38,6 +42,10 @@ class ItemConfig {
                         itemconfig.setItemType(itemtype.GetInt()); 
                         itemconfig.setIcon(icon.GetString()); 
                         itemconfig.setStar(star.GetInt()); 
+                        itemconfig.setAddType(addtype.GetInt()); 
+                        itemconfig.setWorthPrice(worthprice.GetInt()); 
+                        itemconfig.setIconframe(iconframe.GetString()); 
+                        itemconfig.setIconScale(iconscale.GetFloat()); 
                         
                         ItemConfig::Dic().insert(pair<int,ItemConfig>(itemconfig.getId(),itemconfig));
                         ItemConfig::Arr().push_back(itemconfig);
@@ -80,6 +88,34 @@ class ItemConfig {
             Star = val;
         }
         
+        int getAddType(){
+            return AddType;
+        }
+        void setAddType(int val){
+            AddType = val;
+        }
+        
+        int getWorthPrice(){
+            return WorthPrice;
+        }
+        void setWorthPrice(int val){
+            WorthPrice = val;
+        }
+        
+        string getIconframe(){
+            return Iconframe;
+        }
+        void setIconframe(string val){
+            Iconframe = val;
+        }
+        
+        float getIconScale(){
+            return IconScale;
+        }
+        void setIconScale(float val){
+            IconScale = val;
+        }
+        
         
 		
     private:
@@ -88,6 +124,10 @@ class ItemConfig {
          int ItemType;
          string Icon;
          int Star;
+         int AddType;
+         int WorthPrice;
+         string Iconframe;
+         float IconScale;
         
 };
 

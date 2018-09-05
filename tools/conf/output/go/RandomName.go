@@ -13,8 +13,6 @@ import (
 type RandomNameElem struct {
 	Id int
 	PlayerName string
-	PlayerNameTw string
-	PlayerNameEn string
 	
 }
 

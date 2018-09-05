@@ -1,6 +1,7 @@
 package server
 
 import (
+	conf "game/conf"
 	cmds "game/cmds"
 	wraps "game/cmds/wraps"
 	rpc "game/common/rpc/simple"
@@ -29,6 +30,8 @@ func (*ClientHandlers) HeartBeat(cmd *rpc.SimpleCmd, se *server.Session, player 
 	p.GUID = "10001";
 	p.CreateTime = time.Now().Unix()
 	wsInstance.simpleRPC.Send(se,0,cmds.ClientCmds_LOGIN_SUCCESS,0,p,false,"")
+	log.Infof("%v",conf.AppConfig.Dic[1].SocketIp)
+	log.Infof("%v",conf.AppConfig.Dic[1].SocketPort)
 }
 func (*ClientHandlers) LoginGuest(cmd *rpc.SimpleCmd, se *server.Session, devID string, deviceType string, partnerID string, version string) {
 

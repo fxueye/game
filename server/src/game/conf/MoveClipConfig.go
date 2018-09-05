@@ -16,6 +16,7 @@ type MoveClipConfigElem struct {
 	Config string
 	Name string
 	Play string
+	FrameRate float32
 	Times int
 	Location []int
 	Scale []float32

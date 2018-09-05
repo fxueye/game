@@ -28,6 +28,7 @@ class ShopConfig {
 					if(v.IsObject()){
                         Value & id = v["Id"];
                         Value & itemid = v["ItemId"];
+                        Value & itemcount = v["ItemCount"];
                        
                         Value & propaganda = v["Propaganda"];
                         Value & type = v["Type"];
@@ -51,6 +52,7 @@ class ShopConfig {
                         ShopConfig shopconfig;
                         shopconfig.setId(id.GetInt()); 
                         shopconfig.setItemId(itemid.GetInt()); 
+                        shopconfig.setItemCount(itemcount.GetInt()); 
                         
                         shopconfig.setPropaganda(propaganda.GetString()); 
                         shopconfig.setType(type.GetInt()); 
@@ -82,6 +84,13 @@ class ShopConfig {
         }
         void setItemId(int val){
             ItemId = val;
+        }
+        
+        int getItemCount(){
+            return ItemCount;
+        }
+        void setItemCount(int val){
+            ItemCount = val;
         }
         
         
@@ -166,6 +175,7 @@ class ShopConfig {
     private:
          int Id;
          int ItemId;
+         int ItemCount;
         
          string Propaganda;
          int Type;

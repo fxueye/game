@@ -7,6 +7,10 @@ class ItemConfig {
      public ItemType :number ;
      public Icon :string ;
      public Star :number ;
+     public AddType :number ;
+     public WorthPrice :number ;
+     public Iconframe :string ;
+     public IconScale :number ;
     
 
     

@@ -4,6 +4,7 @@ class ShopConfig {
 
 	 public Id :number ;
      public ItemId :number ;
+     public ItemCount :number ;
     
      public Propaganda :string ;
      public Type :number ;

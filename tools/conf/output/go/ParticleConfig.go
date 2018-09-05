@@ -16,6 +16,7 @@ type ParticleConfigElem struct {
 	Config string
 	Location []int
 	Scale []float32
+	SoundId int
 	
 }
 

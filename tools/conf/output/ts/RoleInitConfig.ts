@@ -6,7 +6,19 @@ class RoleInitConfig {
      public IconID :number ;
      public Gold :number ;
      public Diamond :number ;
+     public Body :number ;
+     public Job :string ;
+     public Name :string ;
      public InitSuit :number ;
+     public Cloth : Array<number>  =new Array<number>();
+     public Mood :number ;
+     public Title :number ;
+     public Exp :number ;
+     public Mail :number ;
+     public House :number ;
+     public Car :number ;
+     public Ship :number ;
+     public ItemIds : Array<number>  =new Array<number>();
     
 
     

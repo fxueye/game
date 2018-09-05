@@ -45,6 +45,7 @@ class ParticleConfig {
                                 tScale.push_back(val.GetFloat());
                             }
                         }
+                        Value & soundid = v["SoundId"];
                        
                         ParticleConfig particleconfig;
                         particleconfig.setId(id.GetInt()); 
@@ -52,6 +53,7 @@ class ParticleConfig {
                         particleconfig.setConfig(config.GetString()); 
                         particleconfig.setLocation(tLocation);
                         particleconfig.setScale(tScale);
+                        particleconfig.setSoundId(soundid.GetInt()); 
                         
                         ParticleConfig::Dic().insert(pair<int,ParticleConfig>(particleconfig.getId(),particleconfig));
                         ParticleConfig::Arr().push_back(particleconfig);
@@ -92,6 +94,13 @@ class ParticleConfig {
         void setScale(vector<float> val){
             Scale = val;
         }
+        int getSoundId(){
+            return SoundId;
+        }
+        void setSoundId(int val){
+            SoundId = val;
+        }
+        
         
 		
     private:
@@ -100,6 +109,7 @@ class ParticleConfig {
          string Config;
          vector<int> Location;
          vector<float> Scale;
+         int SoundId;
         
 };
 

@@ -8,11 +8,21 @@
 #include "utils/log.h"
 #include "AppConfig.h"
 #include "BdConfig.h"
+#include "BetConfig.h"
 #include "BgConfig.h"
 #include "BgImgConfig.h"
+#include "BuildingConfig.h"
+#include "CompanyConfig.h"
+#include "CompetitionConfig.h"
+#include "DayConfig.h"
+#include "GameConfig.h"
+#include "HelpConfig.h"
+#include "IntervalConfig.h"
 #include "ItemConfig.h"
 #include "LevelConfig.h"
+#include "MailConfig.h"
 #include "MoveClipConfig.h"
+#include "OddsConfig.h"
 #include "PageConfig.h"
 #include "PartConfig.h"
 #include "PartTypeConfig.h"
@@ -22,11 +32,11 @@
 #include "PropertyTypeConfig.h"
 #include "RandomName.h"
 #include "RoleInitConfig.h"
+#include "RoomConfig.h"
 #include "ShopConfig.h"
 #include "SignConfig.h"
 #include "SlotsConfig.h"
 #include "SoundCongfig.h"
-#include "StockConfig.h"
 #include "SuitConfig.h"
 #include "TextConfig.h"
 #include "TipConfig.h"
@@ -65,11 +75,21 @@ class ConfLoader{
 		void load(string path){
              AppConfig::parse(readJsonFile(path + "/" + "appconfig.json"));
              BdConfig::parse(readJsonFile(path + "/" + "bdconfig.json"));
+             BetConfig::parse(readJsonFile(path + "/" + "betconfig.json"));
              BgConfig::parse(readJsonFile(path + "/" + "bgconfig.json"));
              BgImgConfig::parse(readJsonFile(path + "/" + "bgimgconfig.json"));
+             BuildingConfig::parse(readJsonFile(path + "/" + "buildingconfig.json"));
+             CompanyConfig::parse(readJsonFile(path + "/" + "companyconfig.json"));
+             CompetitionConfig::parse(readJsonFile(path + "/" + "competitionconfig.json"));
+             DayConfig::parse(readJsonFile(path + "/" + "dayconfig.json"));
+             GameConfig::parse(readJsonFile(path + "/" + "gameconfig.json"));
+             HelpConfig::parse(readJsonFile(path + "/" + "helpconfig.json"));
+             IntervalConfig::parse(readJsonFile(path + "/" + "intervalconfig.json"));
              ItemConfig::parse(readJsonFile(path + "/" + "itemconfig.json"));
              LevelConfig::parse(readJsonFile(path + "/" + "levelconfig.json"));
+             MailConfig::parse(readJsonFile(path + "/" + "mailconfig.json"));
              MoveClipConfig::parse(readJsonFile(path + "/" + "moveclipconfig.json"));
+             OddsConfig::parse(readJsonFile(path + "/" + "oddsconfig.json"));
              PageConfig::parse(readJsonFile(path + "/" + "pageconfig.json"));
              PartConfig::parse(readJsonFile(path + "/" + "partconfig.json"));
              PartTypeConfig::parse(readJsonFile(path + "/" + "parttypeconfig.json"));
@@ -79,11 +99,11 @@ class ConfLoader{
              PropertyTypeConfig::parse(readJsonFile(path + "/" + "propertytypeconfig.json"));
              RandomName::parse(readJsonFile(path + "/" + "randomname.json"));
              RoleInitConfig::parse(readJsonFile(path + "/" + "roleinitconfig.json"));
+             RoomConfig::parse(readJsonFile(path + "/" + "roomconfig.json"));
              ShopConfig::parse(readJsonFile(path + "/" + "shopconfig.json"));
              SignConfig::parse(readJsonFile(path + "/" + "signconfig.json"));
              SlotsConfig::parse(readJsonFile(path + "/" + "slotsconfig.json"));
              SoundCongfig::parse(readJsonFile(path + "/" + "soundcongfig.json"));
-             StockConfig::parse(readJsonFile(path + "/" + "stockconfig.json"));
              SuitConfig::parse(readJsonFile(path + "/" + "suitconfig.json"));
              TextConfig::parse(readJsonFile(path + "/" + "textconfig.json"));
              TipConfig::parse(readJsonFile(path + "/" + "tipconfig.json"));

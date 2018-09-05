@@ -46,6 +46,7 @@ class SignConfig {
                                 tNums.push_back(val.GetInt());
                             }
                         }
+                        Value & scale = v["Scale"];
                        
                         SignConfig signconfig;
                         signconfig.setId(id.GetInt()); 
@@ -54,6 +55,7 @@ class SignConfig {
                         signconfig.setBg(bg.GetString()); 
                         signconfig.setReward(tReward);
                         signconfig.setNums(tNums);
+                        signconfig.setScale(scale.GetFloat()); 
                         
                         SignConfig::Dic().insert(pair<int,SignConfig>(signconfig.getId(),signconfig));
                         SignConfig::Arr().push_back(signconfig);
@@ -101,6 +103,13 @@ class SignConfig {
         void setNums(vector<int> val){
             Nums = val;
         }
+        float getScale(){
+            return Scale;
+        }
+        void setScale(float val){
+            Scale = val;
+        }
+        
         
 		
     private:
@@ -110,6 +119,7 @@ class SignConfig {
          string Bg;
          vector<int> Reward;
          vector<int> Nums;
+         float Scale;
         
 };
 

@@ -6,7 +6,11 @@
     {    "Id":5  , "Type":1  , "Name":"car_bg_mp3"  } ,
     {    "Id":6  , "Type":1  , "Name":"house_bg_mp3"  } ,
     {    "Id":7  , "Type":1  , "Name":"ship_bg_mp3"  } ,
+    {    "Id":8  , "Type":1  , "Name":"young_bg_mp3"  } ,
     {    "Id":101  , "Type":2  , "Name":"anjian_mp3"  } ,
-    {    "Id":102  , "Type":2  , "Name":""  } 
+    {    "Id":201  , "Type":2  , "Name":"stock_data_mp3"  } ,
+    {    "Id":202  , "Type":2  , "Name":"price_bottom_mp3"  } ,
+    {    "Id":203  , "Type":2  , "Name":"bet_bottom_mp3"  } ,
+    {    "Id":204  , "Type":2  , "Name":"bet_bottom_mp3"  } 
     
 ]

@@ -1,0 +1,15 @@
+[
+    {    "Id":1  , "IntervalId":1  , "OddsId":2  , "McId":15 } ,
+    {    "Id":2  , "IntervalId":2  , "OddsId":2  , "McId":15 } ,
+    {    "Id":3  , "IntervalId":3  , "OddsId":2  , "McId":15 } ,
+    {    "Id":4  , "IntervalId":4  , "OddsId":2  , "McId":15 } ,
+    {    "Id":5  , "IntervalId":5  , "OddsId":1  , "McId":14 } ,
+    {    "Id":6  , "IntervalId":6  , "OddsId":1  , "McId":14 } ,
+    {    "Id":7  , "IntervalId":1  , "OddsId":4  , "McId":15 } ,
+    {    "Id":8  , "IntervalId":2  , "OddsId":4  , "McId":15 } ,
+    {    "Id":9  , "IntervalId":3  , "OddsId":4  , "McId":15 } ,
+    {    "Id":10  , "IntervalId":4  , "OddsId":4  , "McId":15 } ,
+    {    "Id":11  , "IntervalId":5  , "OddsId":3  , "McId":14 } ,
+    {    "Id":12  , "IntervalId":6  , "OddsId":3  , "McId":14 } 
+    
+]

@@ -7,6 +7,7 @@ class MoveClipConfig {
      public Config :string ;
      public Name :string ;
      public Play :string ;
+     public FrameRate :number ;
      public Times :number ;
      public Location : Array<number>  =new Array<number>();
      public Scale : Array<number>  =new Array<number>();

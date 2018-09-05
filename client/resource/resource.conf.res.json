@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "appconfig_json,bdconfig_json,betconfig_json,bgconfig_json,buildingconfig_json,bgimgconfig_json,companyconfig_json,competitionconfig_json,gameconfig_json,helpconfig_json,itemconfig_json,levelconfig_json,mailconfig_json,moveclipconfig_json,intervalconfig_json,oddsconfig_json,partconfig_json,particleconfig_json,parttypeconfig_json,payconfig_json,pageconfig_json,propertyconfig_json,propertytypeconfig_json,randomname_json,roleinitconfig_json,roomconfig_json,shopconfig_json,signconfig_json,slotsconfig_json,soundcongfig_json,suitconfig_json,textconfig_json,tipconfig_json",
+			"keys": "appconfig_json,bdconfig_json,bgimgconfig_json,companyconfig_json,bgconfig_json,competitionconfig_json,buildingconfig_json,gameconfig_json,dayconfig_json,betconfig_json,helpconfig_json,itemconfig_json,levelconfig_json,oddsconfig_json,intervalconfig_json,moveclipconfig_json,pageconfig_json,partconfig_json,mailconfig_json,particleconfig_json,parttypeconfig_json,propertytypeconfig_json,payconfig_json,roleinitconfig_json,randomname_json,propertyconfig_json,roomconfig_json,signconfig_json,shopconfig_json,slotsconfig_json,soundcongfig_json,suitconfig_json,textconfig_json,tipconfig_json",
 			"name": "preload_config"
 		}
 	],
@@ -17,21 +17,6 @@
 			"name": "bdconfig_json"
 		},
 		{
-			"url": "config/betconfig.json",
-			"type": "json",
-			"name": "betconfig_json"
-		},
-		{
-			"url": "config/bgconfig.json",
-			"type": "json",
-			"name": "bgconfig_json"
-		},
-		{
-			"url": "config/buildingconfig.json",
-			"type": "json",
-			"name": "buildingconfig_json"
-		},
-		{
 			"url": "config/bgimgconfig.json",
 			"type": "json",
 			"name": "bgimgconfig_json"
@@ -42,14 +27,34 @@
 			"name": "companyconfig_json"
 		},
 		{
+			"url": "config/bgconfig.json",
+			"type": "json",
+			"name": "bgconfig_json"
+		},
+		{
 			"url": "config/competitionconfig.json",
 			"type": "json",
 			"name": "competitionconfig_json"
 		},
 		{
+			"url": "config/buildingconfig.json",
+			"type": "json",
+			"name": "buildingconfig_json"
+		},
+		{
 			"url": "config/gameconfig.json",
 			"type": "json",
 			"name": "gameconfig_json"
+		},
+		{
+			"url": "config/dayconfig.json",
+			"type": "json",
+			"name": "dayconfig_json"
+		},
+		{
+			"url": "config/betconfig.json",
+			"type": "json",
+			"name": "betconfig_json"
 		},
 		{
 			"url": "config/helpconfig.json",
@@ -67,14 +72,9 @@
 			"name": "levelconfig_json"
 		},
 		{
-			"url": "config/mailconfig.json",
+			"url": "config/oddsconfig.json",
 			"type": "json",
-			"name": "mailconfig_json"
-		},
-		{
-			"url": "config/moveclipconfig.json",
-			"type": "json",
-			"name": "moveclipconfig_json"
+			"name": "oddsconfig_json"
 		},
 		{
 			"url": "config/intervalconfig.json",
@@ -82,14 +82,24 @@
 			"name": "intervalconfig_json"
 		},
 		{
-			"url": "config/oddsconfig.json",
+			"url": "config/moveclipconfig.json",
 			"type": "json",
-			"name": "oddsconfig_json"
+			"name": "moveclipconfig_json"
+		},
+		{
+			"url": "config/pageconfig.json",
+			"type": "json",
+			"name": "pageconfig_json"
 		},
 		{
 			"url": "config/partconfig.json",
 			"type": "json",
 			"name": "partconfig_json"
+		},
+		{
+			"url": "config/mailconfig.json",
+			"type": "json",
+			"name": "mailconfig_json"
 		},
 		{
 			"url": "config/particleconfig.json",
@@ -102,29 +112,14 @@
 			"name": "parttypeconfig_json"
 		},
 		{
-			"url": "config/payconfig.json",
-			"type": "json",
-			"name": "payconfig_json"
-		},
-		{
-			"url": "config/pageconfig.json",
-			"type": "json",
-			"name": "pageconfig_json"
-		},
-		{
-			"url": "config/propertyconfig.json",
-			"type": "json",
-			"name": "propertyconfig_json"
-		},
-		{
 			"url": "config/propertytypeconfig.json",
 			"type": "json",
 			"name": "propertytypeconfig_json"
 		},
 		{
-			"url": "config/randomname.json",
+			"url": "config/payconfig.json",
 			"type": "json",
-			"name": "randomname_json"
+			"name": "payconfig_json"
 		},
 		{
 			"url": "config/roleinitconfig.json",
@@ -132,19 +127,29 @@
 			"name": "roleinitconfig_json"
 		},
 		{
+			"url": "config/randomname.json",
+			"type": "json",
+			"name": "randomname_json"
+		},
+		{
+			"url": "config/propertyconfig.json",
+			"type": "json",
+			"name": "propertyconfig_json"
+		},
+		{
 			"url": "config/roomconfig.json",
 			"type": "json",
 			"name": "roomconfig_json"
 		},
 		{
-			"url": "config/shopconfig.json",
-			"type": "json",
-			"name": "shopconfig_json"
-		},
-		{
 			"url": "config/signconfig.json",
 			"type": "json",
 			"name": "signconfig_json"
+		},
+		{
+			"url": "config/shopconfig.json",
+			"type": "json",
+			"name": "shopconfig_json"
 		},
 		{
 			"url": "config/slotsconfig.json",

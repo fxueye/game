@@ -8,6 +8,7 @@
     {    "Id":7  , "Name":"chuanwu_bg_front_png"  , "Location":[0,325]  } ,
     {    "Id":8  , "Name":"house_bg_behind_jpg"  , "Location":[0,0]  } ,
     {    "Id":9  , "Name":"house_bg_front_png"  , "Location":[0,0]  } ,
-    {    "Id":10  , "Name":"bg_zhanshi_di_jpg"  , "Location":[0,0]  } 
+    {    "Id":10  , "Name":"bg_zhanshi_di_jpg"  , "Location":[0,0]  } ,
+    {    "Id":11  , "Name":"loading_bg_jpg"  , "Location":[0,0]  } 
     
 ]

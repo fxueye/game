@@ -1,4 +1,4 @@
 [
-    {    "Id":1  , "IconID":0  , "Gold":0  , "Diamond":0  , "InitSuit":1 } 
+    {    "Id":1  , "IconID":0  , "Gold":200000  , "Diamond":100  , "Body":1  , "Job":"秘书"  , "Name":"小宓"  , "InitSuit":1  , "Cloth":[501,1001,1503,2003,3003,3501,4002]  , "Mood":12001  , "Title":1  , "Exp":0  , "Mail":1  , "House":7003  , "Car":7503  , "Ship":8003  , "ItemIds":[] } 
     
 ]

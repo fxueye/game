@@ -31,6 +31,7 @@ class MoveClipConfig {
                         Value & config = v["Config"];
                         Value & name = v["Name"];
                         Value & play = v["Play"];
+                        Value & framerate = v["FrameRate"];
                         Value & times = v["Times"];
                         Value & location = v["Location"];
                         vector<int> tLocation;
@@ -55,6 +56,7 @@ class MoveClipConfig {
                         moveclipconfig.setConfig(config.GetString()); 
                         moveclipconfig.setName(name.GetString()); 
                         moveclipconfig.setPlay(play.GetString()); 
+                        moveclipconfig.setFrameRate(framerate.GetFloat()); 
                         moveclipconfig.setTimes(times.GetInt()); 
                         moveclipconfig.setLocation(tLocation);
                         moveclipconfig.setScale(tScale);
@@ -100,6 +102,13 @@ class MoveClipConfig {
             Play = val;
         }
         
+        float getFrameRate(){
+            return FrameRate;
+        }
+        void setFrameRate(float val){
+            FrameRate = val;
+        }
+        
         int getTimes(){
             return Times;
         }
@@ -127,6 +136,7 @@ class MoveClipConfig {
          string Config;
          string Name;
          string Play;
+         float FrameRate;
          int Times;
          vector<int> Location;
          vector<float> Scale;

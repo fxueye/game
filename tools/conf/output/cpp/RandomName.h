@@ -28,14 +28,10 @@ class RandomName {
 					if(v.IsObject()){
                         Value & id = v["Id"];
                         Value & playername = v["PlayerName"];
-                        Value & playernametw = v["PlayerNameTw"];
-                        Value & playernameen = v["PlayerNameEn"];
                        
                         RandomName randomname;
                         randomname.setId(id.GetInt()); 
                         randomname.setPlayerName(playername.GetString()); 
-                        randomname.setPlayerNameTw(playernametw.GetString()); 
-                        randomname.setPlayerNameEn(playernameen.GetString()); 
                         
                         RandomName::Dic().insert(pair<int,RandomName>(randomname.getId(),randomname));
                         RandomName::Arr().push_back(randomname);
@@ -57,27 +53,11 @@ class RandomName {
             PlayerName = val;
         }
         
-        string getPlayerNameTw(){
-            return PlayerNameTw;
-        }
-        void setPlayerNameTw(string val){
-            PlayerNameTw = val;
-        }
-        
-        string getPlayerNameEn(){
-            return PlayerNameEn;
-        }
-        void setPlayerNameEn(string val){
-            PlayerNameEn = val;
-        }
-        
         
 		
     private:
          int Id;
          string PlayerName;
-         string PlayerNameTw;
-         string PlayerNameEn;
         
 };
 

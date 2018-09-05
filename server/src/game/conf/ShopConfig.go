@@ -13,6 +13,7 @@ import (
 type ShopConfigElem struct {
 	Id int
 	ItemId int
+	ItemCount int
 	Name string
 	Propaganda string
 	Type int

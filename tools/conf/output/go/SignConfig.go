@@ -17,6 +17,7 @@ type SignConfigElem struct {
 	Bg string
 	Reward []int
 	Nums []int
+	Scale float32
 	
 }
 

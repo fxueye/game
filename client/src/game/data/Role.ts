@@ -132,7 +132,7 @@ class Role {
 		// Logger.log("start---------------------------------")
 		for(var item of this._itemsUid2ItemDic.values){
 			// Logger.log("item id:" + item.ID + " cout:" + item.Count + "  price:" + item.ItemConfig.WorthPrice);
-			assetValue+= item.Count * item.ItemConfig.WorthPrice;
+			// assetValue+= item.Count * item.ItemConfig.WorthPrice;
 		}
 		// Logger.log("end---------------------------------")
 		return assetValue;

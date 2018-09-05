@@ -61,7 +61,7 @@ class ServerView extends BaseUIView {
 				var player = new PlayerWrap();
 				player.GUID = "100001";
 				player.CreateTime = App.Instance.SrvDate.ServerTime;
-				App.Instance.RPC.SendPacket(ServerGWCmdsPacketGenerate.HeartBeatPacket(0,player));
+				App.Instance.RPC.SendPacket(ServerGWCmdsPackGen.HeartBeatPacket(0,player));
 			}
 			// var a = Net.Simple.BitConverter.GetBytes(Long.fromString("123"));
 			// var b = Net.Simple.BitConverter.ToLong(a,0);

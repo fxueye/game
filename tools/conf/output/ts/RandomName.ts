@@ -4,8 +4,6 @@ class RandomName {
 
 	 public Id :number ;
      public PlayerName :string ;
-     public PlayerNameTw :string ;
-     public PlayerNameEn :string ;
     
 
     

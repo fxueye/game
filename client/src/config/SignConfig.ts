@@ -8,6 +8,7 @@ class SignConfig {
      public Bg :string ;
      public Reward : Array<number>  =new Array<number>();
      public Nums : Array<number>  =new Array<number>();
+     public Scale :number ;
     
 
     

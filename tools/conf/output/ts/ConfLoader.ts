@@ -11,12 +11,44 @@ class ConfLoader{
                 BdConfig.parse(data);
             },
             
+            "betconfig_json":(data)=>{
+                BetConfig.parse(data);
+            },
+            
             "bgconfig_json":(data)=>{
                 BgConfig.parse(data);
             },
             
             "bgimgconfig_json":(data)=>{
                 BgImgConfig.parse(data);
+            },
+            
+            "buildingconfig_json":(data)=>{
+                BuildingConfig.parse(data);
+            },
+            
+            "companyconfig_json":(data)=>{
+                CompanyConfig.parse(data);
+            },
+            
+            "competitionconfig_json":(data)=>{
+                CompetitionConfig.parse(data);
+            },
+            
+            "dayconfig_json":(data)=>{
+                DayConfig.parse(data);
+            },
+            
+            "gameconfig_json":(data)=>{
+                GameConfig.parse(data);
+            },
+            
+            "helpconfig_json":(data)=>{
+                HelpConfig.parse(data);
+            },
+            
+            "intervalconfig_json":(data)=>{
+                IntervalConfig.parse(data);
             },
             
             "itemconfig_json":(data)=>{
@@ -27,8 +59,16 @@ class ConfLoader{
                 LevelConfig.parse(data);
             },
             
+            "mailconfig_json":(data)=>{
+                MailConfig.parse(data);
+            },
+            
             "moveclipconfig_json":(data)=>{
                 MoveClipConfig.parse(data);
+            },
+            
+            "oddsconfig_json":(data)=>{
+                OddsConfig.parse(data);
             },
             
             "pageconfig_json":(data)=>{
@@ -67,6 +107,10 @@ class ConfLoader{
                 RoleInitConfig.parse(data);
             },
             
+            "roomconfig_json":(data)=>{
+                RoomConfig.parse(data);
+            },
+            
             "shopconfig_json":(data)=>{
                 ShopConfig.parse(data);
             },
@@ -81,10 +125,6 @@ class ConfLoader{
             
             "soundcongfig_json":(data)=>{
                 SoundCongfig.parse(data);
-            },
-            
-            "stockconfig_json":(data)=>{
-                StockConfig.parse(data);
             },
             
             "suitconfig_json":(data)=>{

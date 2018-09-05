@@ -1,17 +1,12 @@
 [
-    {    "Id":7001   , "Type":1  , "Image":"pic_house_0001_png"  , "Icon":"icon_h_loremipsum_png"  , "IconScale":0.62  , "Deviation":[0.0,12.0]  , "Sort":1  , "Location":[500,65] } ,
-    {    "Id":7002   , "Type":1  , "Image":"pic_house_0002_png"  , "Icon":"icon_h_realestate_png"  , "IconScale":0.7  , "Deviation":[2.0,6.0]  , "Sort":2  , "Location":[450,220] } ,
-    {    "Id":7501   , "Type":2  , "Image":"pic_car_0001_png"  , "Icon":"icon_c_koenigsegg_png"  , "IconScale":0.64  , "Deviation":[0.0,10.0]  , "Sort":2  , "Location":[480,220] } ,
+    {    "Id":7001   , "Type":1  , "Image":"pic_house_0001_png"  , "Icon":"icon_h_loremipsum_png"  , "IconScale":0.62  , "Deviation":[0.0,12.0]  , "Sort":2  , "Location":[500,65] } ,
+    {    "Id":7002   , "Type":1  , "Image":"pic_house_0002_png"  , "Icon":"icon_h_realestate_png"  , "IconScale":0.7  , "Deviation":[2.0,15.0]  , "Sort":1  , "Location":[450,220] } ,
+    {    "Id":7003   , "Type":1  , "Image":"pic_house_0003_png"  , "Icon":"icon_h_realestate_png"  , "IconScale":0.7  , "Deviation":[2.0,10.0]  , "Sort":3  , "Location":[500,200] } ,
+    {    "Id":7501   , "Type":2  , "Image":"pic_car_0001_png"  , "Icon":"icon_c_koenigsegg_png"  , "IconScale":0.64  , "Deviation":[0.0,10.0]  , "Sort":3  , "Location":[480,220] } ,
     {    "Id":7502   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
-    {    "Id":7503   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
-    {    "Id":7504   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
-    {    "Id":7505   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
-    {    "Id":7506   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
-    {    "Id":7507   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
-    {    "Id":7508   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
-    {    "Id":7509   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
-    {    "Id":7510   , "Type":2  , "Image":"pic_car_0002_png"  , "Icon":"icon_c_bugatti_png"  , "IconScale":0.55  , "Deviation":[0.0,10.0]  , "Sort":1  , "Location":[500,220] } ,
+    {    "Id":7503   , "Type":2  , "Image":"pic_car_0003_png"  , "Icon":"icon_c_dazhong_png"  , "IconScale":0.68  , "Deviation":[0.0,10.0]  , "Sort":2  , "Location":[450,180] } ,
     {    "Id":8001   , "Type":3  , "Image":"pic_ship_0001_png"  , "Icon":"icon_s_ferretti_png"  , "IconScale":0.55  , "Deviation":[0.0,8.0]  , "Sort":1  , "Location":[450,185] } ,
-    {    "Id":8002   , "Type":3  , "Image":"pic_ship_0002_png"  , "Icon":"icon_s_heysea_png"  , "IconScale":0.6  , "Deviation":[2.0,10.0]  , "Sort":2  , "Location":[500,185] } 
+    {    "Id":8002   , "Type":3  , "Image":"pic_ship_0002_png"  , "Icon":"icon_s_heysea_png"  , "IconScale":0.6  , "Deviation":[2.0,10.0]  , "Sort":3  , "Location":[500,185] } ,
+    {    "Id":8003   , "Type":3  , "Image":"pic_ship_0003_png"  , "Icon":"icon_s_heysea_png"  , "IconScale":0.9  , "Deviation":[0.0,20.0]  , "Sort":2  , "Location":[520,320] } 
     
 ]

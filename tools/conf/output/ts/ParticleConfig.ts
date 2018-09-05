@@ -7,6 +7,7 @@ class ParticleConfig {
      public Config :string ;
      public Location : Array<number>  =new Array<number>();
      public Scale : Array<number>  =new Array<number>();
+     public SoundId :number ;
     
 
     
