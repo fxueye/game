@@ -1,8 +1,9 @@
 package server
 
 import (
-	log "github.com/cihub/seelog"
 	"os"
+
+	log "github.com/cihub/seelog"
 )
 
 type ExampleService struct {

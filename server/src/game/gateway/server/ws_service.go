@@ -2,14 +2,15 @@ package server
 
 import (
 	cmd "game/cmds"
-	"game/common/server/ws"
-	"time"
-	"game/common/server"
 	rpc "game/common/rpc/simple"
-	log "github.com/cihub/seelog"
+	"game/common/server"
+	"game/common/server/ws"
 	"sync"
-	"golang.org/x/net/websocket"
 	"sync/atomic"
+	"time"
+
+	log "github.com/cihub/seelog"
+	"golang.org/x/net/websocket"
 )
 
 type WsService struct {
@@ -27,12 +28,12 @@ func newWsService(port int, pkgLimit int) *WsService {
 	inv := cmd.NewServerGWCmdsInvoker(&ClientHandlers{}, ClientProxyHandler)
 	serv.simpleRPC = rpc.NewSimpleRPC(inv, false, time.Duration(config.RPCTimeOut)*time.Second, nil)
 	serv.WebsocketService = ws.NewWebsocketService(
-		port, 
+		port,
 		time.Second,
 		serv.simpleRPC,
 		serv,
 		server.SessionConfig{config.SendChanLimit, config.RecvChanLimit})
-	
+
 	serv.sessions = make(map[int64]*server.Session)
 	serv.pkgLimit = pkgLimit
 	return serv

@@ -2,8 +2,8 @@ package server
 
 import (
 	conf "game/common/config"
-	jsonconf "game/conf"
 	"game/common/server"
+	gameconfig "game/conf"
 	"runtime"
 
 	log "github.com/cihub/seelog"
@@ -25,13 +25,13 @@ func Init() {
 	Instance = &GatewayServer{
 		server.NewServer(),
 	}
-	jsonconf.LoadConfigs()
+	gameconfig.LoadConfigs()
 	conf.LoadConfig("json", "config/gateway_config.json", &config)
 	gwInstance = newGatewayService(config.ServerPort, config.PackLimit)
 	Instance.RegServ("gw", gwInstance)
 	// gw2csInstance = newGW2GSService("gw2cs", config.CenterIp, config.CenterPort)
 	// Instance.RegServ("gw2cs", gw2csInstance)
-	wsInstance = newWsService(config.WsPort,config.PackLimit)
+	wsInstance = newWsService(config.WsPort, config.PackLimit)
 	Instance.RegServ("ws", wsInstance)
 	Instance.RegSigCallback(OnSignal)
 }
