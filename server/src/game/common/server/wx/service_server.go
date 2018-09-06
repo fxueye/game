@@ -60,6 +60,7 @@ type WxService struct {
 	handler      IMessgeHandler
 	special      map[string]interface{}
 	cmds         *list.List
+	mediaCount   int
 }
 type IMessgeHandler interface {
 	OnMessage(*Message)
@@ -85,6 +86,7 @@ func NewWxService(loginUrl, qrcodeDir string, special []string, handler IMessgeH
 	s.loginUrl = loginUrl
 	s.special = make(map[string]interface{})
 	s.cmds = list.New()
+	s.mediaCount = 0
 	for _, str := range special {
 		s.special[str] = str
 	}
@@ -657,6 +659,12 @@ func (s *WxService) getUuid() (string, error) {
 
 func (s *WxService) SendMsgToMyself(msg string) error {
 	return s.SendMsg(s.user.UserName, msg)
+}
+func (s *WxService) UploadMedia(filepath string) error {
+	url := fmt.Sprintf("%s/cgi-bin/mmwebwx-bin/webwxuploadmedia?f=json")
+	s.mediaCount += 1
+	log.Info(url)
+	return nil
 }
 func (s *WxService) SendMsg(userName, msg string) error {
 	values := &url.Values{}
