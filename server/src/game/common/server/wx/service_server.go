@@ -11,6 +11,7 @@ import (
 	"game/common/utils"
 	"io"
 	"io/ioutil"
+	"math/rand"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -660,12 +661,36 @@ func (s *WxService) getUuid() (string, error) {
 func (s *WxService) SendMsgToMyself(msg string) error {
 	return s.SendMsg(s.user.UserName, msg)
 }
-func (s *WxService) UploadMedia(filepath string) error {
-	url := fmt.Sprintf("%s/cgi-bin/mmwebwx-bin/webwxuploadmedia?f=json")
+func (s *WxService) UploadMedia(filePath string) error {
+	imgUpurl := fmt.Sprintf("%s/cgi-bin/mmwebwx-bin/webwxuploadmedia?f=json")
 	s.mediaCount += 1
-	log.Info(url)
+	mimeType := GetMimeType(filePath)
+	if mimeType == "" {
+		mimeType = "text/plain"
+	}
+	mediaType := "pic"
+	strs := strings.Split(mimeType, "/")
+	if strs[0] == "image" {
+		mediaType = "pic"
+	} else {
+		mediaType = "doc"
+	}
+	lastModifieDate := utils.WebTime(time.Now().UTC())
+	fileSize := getFileSize(filePath)
+
+	values := &url.Values{}
+	values.Set("pass_ticket", s.secret.PassTicket)
+
+	clientMediaId := fmt.Sprintf("%v%v", time.Now().Unix(), rand.Intn(10000)*10000)
+	log.Info(values)
+	log.Info(imgUpurl)
+	log.Info(mediaType)
+	log.Info(lastModifieDate)
+	log.Info(fileSize)
+	log.Info(clientMediaId)
 	return nil
 }
+
 func (s *WxService) SendMsg(userName, msg string) error {
 	values := &url.Values{}
 	values.Set("pass_ticket", s.secret.PassTicket)
